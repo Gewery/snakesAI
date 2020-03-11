@@ -234,6 +234,19 @@ public class SnakeGame {
     }
 
     /**
+     * Runs game without any pauses
+     */
+    public void runWithoutPauses(int steps_allowed) throws InterruptedException {
+        while (steps_allowed-- > 0 && runOneStep());
+        if (steps_allowed == 0 && gameResult.equals("0 - 0")) {
+            int snake0_size = snake0.body.size();
+            int snake1_size = snake1.body.size();
+            gameResult = (snake0_size > snake1_size ? 1 : 0) + " - " + (snake1_size > snake0_size ? 1 : 0);
+            System.out.println("Time is over: " + gameResult);
+        }
+    }
+
+    /**
      * Selects random non-occupied cell of maze
      *
      * @return random non-occupied coordinate of the game board
