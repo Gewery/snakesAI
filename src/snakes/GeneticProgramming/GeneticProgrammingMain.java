@@ -7,7 +7,7 @@ import snakes.GeneticProgramming.Subfunctions.CollisionWithObject;
 import snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple;
 
 public class GeneticProgrammingMain {
-    final static int MAX_GENERATION_COUNT = 1;
+    final static int MAX_GENERATION_COUNT = 30;
 
     public static void main(String[] args) throws InterruptedException {
         Node root = new Node(2, null);
@@ -16,8 +16,7 @@ public class GeneticProgrammingMain {
         root.right = new Node(1, root);
         root.right.subfunction = new ManhattanDistanceApple();
         root.left.subfunction = new CollisionWithObject();
-        Population population = new Population(root);
-        //Population population = new Population();
+        Population population = new Population();
         for (int i = 0; i < MAX_GENERATION_COUNT; i++) {
             long time = System.currentTimeMillis();
             System.out.print("Generation: " + i + " ");
@@ -32,9 +31,9 @@ public class GeneticProgrammingMain {
         Bot bot1 = new Bot_n_strygin();
 
         Coordinate mazeSize = new Coordinate(14, 14);
-        Coordinate head0 = new Coordinate(2, 2);
+        Coordinate head0 = new Coordinate(5, 5);
         Direction tailDirection0 = Direction.DOWN;
-        Coordinate head1 = new Coordinate(5, 5);
+        Coordinate head1 = new Coordinate(8, 8);
         Direction tailDirection1 = Direction.UP;
         int snakeSize = 3;
 
