@@ -32,8 +32,31 @@ abstract class ManhattanDistance implements Subfunction {
         return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
     }
 
+    /**
+     * Calculate maximum possible distance between 2 object on the maze
+     *
+     * @param mazeSize maze size
+     * @return maximum possible distance between 2 object
+     */
     protected float calculateDiagonalDistance(Coordinate mazeSize) {
         Coordinate zeroCoordinate = new Coordinate(0, 0);
         return calculateManhattanDistance(zeroCoordinate, mazeSize);
+    }
+
+    /**
+     * Calculate maximum distance from starting point (0, 0) to each cell of maze
+     *
+     * @return maximum distance from starting point (0, 0) to each cell of maze
+     */
+    protected float calculateMaxBodyDistance(Coordinate mazeSize) {
+        int totalDistance = 0;
+
+        for (int i = 1; i <= mazeSize.y; i++) {
+            for (int j = 0; j < mazeSize.x; j++) {
+                totalDistance += (i - 1 + j);
+            }
+        }
+
+        return totalDistance;
     }
 }
