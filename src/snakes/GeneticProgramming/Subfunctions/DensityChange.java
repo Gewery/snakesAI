@@ -4,6 +4,8 @@ import snakes.Coordinate;
 import snakes.Direction;
 import snakes.Snake;
 
+import java.util.ArrayList;
+
 public class DensityChange implements Subfunction {
 
     /**
@@ -18,6 +20,59 @@ public class DensityChange implements Subfunction {
      */
     @Override
     public float value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
-        return 0;
+        int grid_x = findLeastDivisor(mazeSize.x);
+        int grid_y = findLeastDivisor(mazeSize.y);
+
+        Coordinate head = snake.getHead();
+        Coordinate headMoved = head.moveTo(direction);
+
+        float densityInitial = calculateDensity(head, snake, opponent, grid_x, grid_y);
+        float densityIFinal = calculateDensity(headMoved, snake, opponent, grid_x, grid_y);
+
+        // positive - next area with lower density, negative - next area with higher density
+        return (densityInitial - densityIFinal) / (grid_x * grid_y);
+    }
+
+    private int findLeastDivisor(int n) {
+        for (int i = 3; i <= n; i++)
+            if (n % i == 0) {
+                return i;
+            }
+
+        if (n % 2 == 0) {
+            return 2;
+        } else {
+            return 1;
+        }
+    }
+
+    private float calculateDensity(Coordinate head, Snake snake, Snake opponent, int grid_x, int grid_y) {
+        int min_x = (int) Math.floor((float) head.x / grid_x) * grid_x;
+        int min_y = (int) Math.floor((float) head.x / grid_x) * grid_y;
+
+        int max_x = (int) (Math.ceil((float) head.x / grid_x) * grid_x);
+        int max_y = (int) (Math.ceil((float) head.y / grid_y) * grid_y);
+
+        ArrayList<Coordinate> coordinatesFromBlock = new ArrayList<>();
+
+
+        for (int x = min_x; x < max_x; x++) {
+            for (int y = min_y; y < max_y; y++) {
+                coordinatesFromBlock.add(new Coordinate(x, y));
+            }
+        }
+
+        int counter = 0;
+        int hit = 0;
+        for (Coordinate bodyPiece : coordinatesFromBlock) {
+            if (snake.elements.contains(bodyPiece)) {
+                hit += 1;
+            } else if (opponent.elements.contains(bodyPiece)) {
+                hit += 1;
+            }
+            counter += 1;
+        }
+
+        return (float) hit / counter;
     }
 }
