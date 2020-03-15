@@ -6,7 +6,7 @@ import snakes.Snake;
 
 public class ManhattanDistanceSnakeBody extends ManhattanDistance {
     /**
-     * Given game state and direction calculates the distance to object from given direction
+     * Given game state and direction calculates the sum of the distances from snake's head to each piece od body
      *
      * @param direction direction to calculate goodness for
      * @param snake     information about current snake
@@ -17,12 +17,14 @@ public class ManhattanDistanceSnakeBody extends ManhattanDistance {
      */
     @Override
     public float value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
-        int totalDisatance = 0;
+        int counter = snake.body.size() - 1, totalDisatance = 0;
+
+
         Coordinate head = snake.getHead();
         for (Coordinate coordinate : snake.body) {
             totalDisatance += calculateManhattanDistance(head, coordinate);
         }
 
-        return totalDisatance;
+        return totalDisatance / (counter * calculateDiagonalDistance(mazeSize));
     }
 }

@@ -10,6 +10,6 @@ public class DistanceToWall implements Subfunction {
 
         Coordinate to = snake.getHead().moveTo(direction);
 
-        return Math.max(Math.max(Math.abs(mazeSize.x - to.x), to.x - 1), Math.max(mazeSize.y - to.y, to.y - 1));
+        return Math.max(Math.max(Math.abs(mazeSize.x - to.x), to.x - 1) / mazeSize.x, Math.max(mazeSize.y - to.y, to.y - 1) / mazeSize.y);
     }
 }

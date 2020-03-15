@@ -31,4 +31,9 @@ abstract class ManhattanDistance implements Subfunction {
     protected float calculateManhattanDistance(Coordinate a, Coordinate b) {
         return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
     }
+
+    protected float calculateDiagonalDistance(Coordinate mazeSize) {
+        Coordinate zeroCoordinate = new Coordinate(0, 0);
+        return calculateManhattanDistance(zeroCoordinate, mazeSize);
+    }
 }
