@@ -19,15 +19,15 @@ public class DensityChange implements Subfunction {
      * @return any float value, the larger the number, the better for the snake this direction
      */
     @Override
-    public float value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
+    public double value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
         int grid_x = findLeastDivisor(mazeSize.x);
         int grid_y = findLeastDivisor(mazeSize.y);
 
         Coordinate head = snake.getHead();
         Coordinate headMoved = head.moveTo(direction);
 
-        float densityInitial = calculateDensity(head, snake, opponent, grid_x, grid_y);
-        float densityIFinal = calculateDensity(headMoved, snake, opponent, grid_x, grid_y);
+        double densityInitial = calculateDensity(head, snake, opponent, grid_x, grid_y);
+        double densityIFinal = calculateDensity(headMoved, snake, opponent, grid_x, grid_y);
 
         // positive - next area with lower density, negative - next area with higher density
         return (densityInitial - densityIFinal) / (grid_x * grid_y);
@@ -46,7 +46,7 @@ public class DensityChange implements Subfunction {
         }
     }
 
-    private float calculateDensity(Coordinate head, Snake snake, Snake opponent, int grid_x, int grid_y) {
+    private double calculateDensity(Coordinate head, Snake snake, Snake opponent, int grid_x, int grid_y) {
         int min_x = (int) Math.floor((float) head.x / grid_x) * grid_x;
         int min_y = (int) Math.floor((float) head.x / grid_x) * grid_y;
 
@@ -73,6 +73,6 @@ public class DensityChange implements Subfunction {
             counter += 1;
         }
 
-        return (float) hit / counter;
+        return hit / counter;
     }
 }

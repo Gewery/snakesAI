@@ -16,8 +16,8 @@ public class ManhattanDistanceSnakeBody extends ManhattanDistance {
      * @return distance to object
      */
     @Override
-    public float value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
-        int counter = snake.body.size() - 1, totalDistance = 0;
+    public double value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
+        int totalDistance = 0;
 
 
         Coordinate head = snake.getHead();

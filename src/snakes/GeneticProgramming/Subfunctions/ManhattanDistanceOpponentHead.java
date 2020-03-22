@@ -16,7 +16,7 @@ public class ManhattanDistanceOpponentHead extends ManhattanDistance {
      * @return distance to object
      */
     @Override
-    public float value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
+    public double value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
         Coordinate head = snake.getHead();
         Coordinate headOpponent = opponent.getHead();
         return calculateManhattanDistance(head.moveTo(direction), headOpponent) / calculateDiagonalDistance(mazeSize);

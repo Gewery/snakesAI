@@ -10,10 +10,11 @@ import java.util.Comparator;
 import java.util.Random;
 
 public class Population {
-    final int POPULATION_SIZE = 10; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
-    final int ELITISM_COUNT = 2; // must be less or equal to POPULATION_SIZE
-    final int PARENTS_SELECTION_GROUP_SIZE = 5;
-    final int MAX_MUTATION_HEIGHT_SUBTREE = 5; // max height that can be added to a tree after mutation
+    final int POPULATION_SIZE = 30; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
+    final int ELITISM_COUNT = 6; // must be less or equal to POPULATION_SIZE
+    final int PARENTS_SELECTION_GROUP_SIZE = 15;
+
+    final int MAX_MUTATION_HEIGHT_SUBTREE = 4; // max height that can be added to a tree after mutation
     final int NUMBER_OF_TOURNAMENT_RUNS = 1;
     final int STEPS_PER_GAME = 900; // number of steps allowed for one game
     final double MUTATION_PROBABILITY = 0.03;
@@ -116,7 +117,7 @@ public class Population {
      * @return ArrayList with pairs (Node, it's score) !Order of nodes is the same as in participantsTrees!
      * @throws InterruptedException
      */
-    private ArrayList<Pair<Node, Integer>> runTournamentNTimes(ArrayList<Node> participantsTrees, int n) throws InterruptedException {
+    public ArrayList<Pair<Node, Integer>> runTournamentNTimes(ArrayList<Node> participantsTrees, int n) throws InterruptedException {
         // Initial game settings
         Coordinate mazeSize = new Coordinate(14, 14);
         Coordinate head0 = new Coordinate(5, 5);

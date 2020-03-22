@@ -19,7 +19,7 @@ abstract class ManhattanDistance implements Subfunction {
      * @return distance to object
      */
     @Override
-    abstract public float value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple);
+    abstract public double value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple);
 
     /**
      * Calculate Manhattan Distance between two coordinates

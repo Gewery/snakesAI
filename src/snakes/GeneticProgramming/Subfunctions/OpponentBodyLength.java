@@ -19,7 +19,7 @@ public class OpponentBodyLength implements Subfunction {
      * 1 - perfect direction
      */
     @Override
-    public float value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
-        return (float) opponent.body.size() / (mazeSize.x * mazeSize.y);
+    public double value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
+        return opponent.body.size() / (mazeSize.x * mazeSize.y);
     }
 }

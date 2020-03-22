@@ -7,5 +7,5 @@ public interface Operation {
      * @param b second term
      * @return result of operation on a and b
      */
-    float calculate(float a, float b);
+    double calculate(double a, double b);
 }

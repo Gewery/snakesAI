@@ -20,5 +20,5 @@ public interface Subfunction {
      * 0 - neutral direction
      * 1 - perfect direction
      */
-    float value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple);
+    double value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple);
 }

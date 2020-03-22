@@ -20,13 +20,17 @@ public class Node {
      * 2 - operaton (+/-/...)
      */
     int type;
-    float constant_value;
+    double constant_value;
     Subfunction subfunction;
     Operation operation;
     Node left = null, right = null, parent = null;
     Random rn = new Random();
     static ArrayList<Subfunction> availableSubfunctions = new SubfunctionsLoader().getAllSubfunctions();
     static ArrayList<Operation> availableOperations = new OperationsLoader().getAllOperations();
+    final static double CONSTANT_VALUE_PROBABILITY = 0.2;
+    final static double SUBFUNCTION_PROBABILITY = 0.3;
+    final static double OPERATION_PROBABILITY = 1 - CONSTANT_VALUE_PROBABILITY - SUBFUNCTION_PROBABILITY;
+
 
     // fix chosing parents
     // crossover with probability
@@ -48,7 +52,14 @@ public class Node {
      * @param parent parent node (null if this is a root)
      */
     public Node(Node parent) {
-        type = rn.nextInt(3);
+        int rnd = rn.nextInt(3);
+        if (rnd < CONSTANT_VALUE_PROBABILITY)
+            type = 0;
+        else if (rnd < CONSTANT_VALUE_PROBABILITY + SUBFUNCTION_PROBABILITY)
+            type = 1;
+        else
+            type = 2;
+
         this.parent = parent;
         NodeInit();
     }
@@ -74,13 +85,13 @@ public class Node {
 
     private void NodeInit() {
         switch (this.type) {
-            case 0: constant_value = rn.nextFloat(); break;
+            case 0: constant_value = rn.nextDouble(); break;
             case 1: subfunction = availableSubfunctions.get(rn.nextInt(availableSubfunctions.size())); break;
             case 2: operation = availableOperations.get(rn.nextInt(availableOperations.size())); break;
         }
     }
 
-    public float computeValue(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
+    public double computeValue(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
         switch (type) {
             case 0: return constant_value;
             case 1: return subfunction.value(direction, snake, opponent, mazeSize, apple);

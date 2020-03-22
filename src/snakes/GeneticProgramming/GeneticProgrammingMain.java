@@ -1,10 +1,14 @@
 package snakes.GeneticProgramming;
 
 import NStrygin.Bot_n_strygin;
+import javafx.util.Pair;
 import snakes.*;
 import snakes.GeneticProgramming.Operations.Subtraction;
 import snakes.GeneticProgramming.Subfunctions.CollisionWithObject;
 import snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class GeneticProgrammingMain {
     final static int MAX_GENERATION_COUNT = 30;
@@ -18,13 +22,18 @@ public class GeneticProgrammingMain {
         root.left.subfunction = new CollisionWithObject();
         Population population = new Population();
         for (int i = 0; i < MAX_GENERATION_COUNT; i++) {
+            if (i == MAX_GENERATION_COUNT - 1) {
+                int y = 0;
+            }
             long time = System.currentTimeMillis();
             System.out.print("Generation: " + i + " ");
             population.makeNextGeneration();
             System.out.println("Time taken: " + (System.currentTimeMillis() - time) / 1000 + " seconds");
         }
 
-        Node bestTree = population.trees.get(population.trees.size() - 1);
+        ArrayList<Pair<Node, Integer>> tournamentResults = population.runTournamentNTimes(population.trees, population.NUMBER_OF_TOURNAMENT_RUNS);
+        tournamentResults.sort(Comparator.comparingInt(Pair::getValue)); // sort by the number of wins
+        Node bestTree = tournamentResults.get(tournamentResults.size() - 1).getKey();
         printTree(bestTree);
 
         Bot_GP bot0 = new Bot_GP(bestTree);
