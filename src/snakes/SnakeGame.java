@@ -134,7 +134,7 @@ public class SnakeGame {
      * @return whether to continue the game
      */
     public boolean runOneStep() throws InterruptedException {
-        output(toString());
+        //output(toString());
 
         // the first bot takes a decision of next move
 
@@ -181,8 +181,8 @@ public class SnakeGame {
         }
 
 
-        output("snake0->" + d0 + ", snake1->" + d1);
-        output("Apples eaten: " + appleEaten0 + " - " + appleEaten1);
+        //output("snake0->" + d0 + ", snake1->" + d1);
+        //output("Apples eaten: " + appleEaten0 + " - " + appleEaten1);
 
         //var grow = move % 3 == 2;
         boolean grow0 = snake0.getHead().moveTo(d0).equals(appleCoordinate);
@@ -214,6 +214,7 @@ public class SnakeGame {
             else if (s0dead && s1dead)
                 result = (appleEaten0 > appleEaten1 ? 1 : 0) + " - " + (appleEaten1 > appleEaten0 ? 1 : 0);
 
+            //output("Result: " + result);
             gameResult += result;
         }
         return cont;
@@ -230,7 +231,7 @@ public class SnakeGame {
                 return;
             }
 
-        output(gameResult);
+        //output(gameResult);
     }
 
     /**

@@ -6,13 +6,14 @@ import snakes.Direction;
 import snakes.SnakeGame;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 
 public class Population {
-    final int POPULATION_SIZE = 30; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
-    final int ELITISM_COUNT = 6; // must be less or equal to POPULATION_SIZE
-    final int PARENTS_SELECTION_GROUP_SIZE = 15;
+    final int POPULATION_SIZE = 10; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
+    final int ELITISM_COUNT = 4; // must be less or equal to POPULATION_SIZE
+    final int PARENTS_SELECTION_GROUP_SIZE = 4;
 
     final int MAX_MUTATION_HEIGHT_SUBTREE = 4; // max height that can be added to a tree after mutation
     final int NUMBER_OF_TOURNAMENT_RUNS = 1;
@@ -46,40 +47,40 @@ public class Population {
     }
 
     public void makeNextGeneration() throws InterruptedException {
+        ArrayList<Integer> parentsSelectionGroupIndices = new ArrayList<>();
+        for (int i = 0; i < POPULATION_SIZE; i++)
+            parentsSelectionGroupIndices.add(i);
+
         ArrayList<Node> nextGeneration = new ArrayList<>();
         // crossover stage
         for (int i = 0; i < POPULATION_SIZE - ELITISM_COUNT; i += 2) {
             Node par1 = null, par2 = null;
-            int par1_index = -1, par2_index = -1;
             for (int j = 0; j < 2; j++) {
+                Collections.shuffle(parentsSelectionGroupIndices);
                 ArrayList<Node> parentsSelectionGroup = new ArrayList<>();
-                ArrayList<Integer> parentsSelectionGroupIndices = new ArrayList<>();
-                for (int k = 0; k < PARENTS_SELECTION_GROUP_SIZE; k++) {
-                    int chosen = rn.nextInt(POPULATION_SIZE);
-                    while (chosen == par1_index) { // to make sure par2 != par1
-                        chosen = rn.nextInt(POPULATION_SIZE);
-                    }
-                    parentsSelectionGroup.add(trees.get(chosen));
-                    parentsSelectionGroupIndices.add(chosen);
-                }
+
+                for (int k = 0; k < PARENTS_SELECTION_GROUP_SIZE; k++)
+                    parentsSelectionGroup.add(trees.get(parentsSelectionGroupIndices.get(k)));
 
                 ArrayList<Pair<Node, Integer>> tournamentResults = runTournamentNTimes(parentsSelectionGroup, NUMBER_OF_TOURNAMENT_RUNS);
-                int best_tree_index = -1;
+                Node best_tree = null;
                 int max_score = -1;
-                for (int k = 0; k < tournamentResults.size(); k++) { // choosing the best Node
-                    if (tournamentResults.get(k).getValue() > max_score) {
-                        max_score = tournamentResults.get(k).getValue();
-                        best_tree_index = parentsSelectionGroupIndices.get(k);
+                for (Pair<Node, Integer> tournamentResult : tournamentResults) { // choosing the best Node
+                    if (tournamentResult.getValue() > max_score) {
+                        max_score = tournamentResult.getValue();
+                        best_tree = tournamentResult.getKey();
                     }
                 }
-                if (par1_index == -1) {
-                    par1_index = best_tree_index;
-                    par1 = trees.get(par1_index);
+                if (par1 == null) {
+                    par1 = best_tree;
+                    trees.remove(best_tree);
+                    parentsSelectionGroupIndices.remove(Integer.valueOf(trees.size()));
                 } else {
-                    par2_index = best_tree_index;
-                    par2 = trees.get(par2_index);
+                    par2 = best_tree;
                 }
             }
+            parentsSelectionGroupIndices.add(trees.size());
+            trees.add(par1);
 
             Pair<Node, Node> children;
             if (rn.nextDouble() <= CROSSOVER_PROBABILITY) {
@@ -104,10 +105,12 @@ public class Population {
         ArrayList<Pair<Node, Integer>> tournamentResults = runTournamentNTimes(trees, NUMBER_OF_TOURNAMENT_RUNS);
         // 1 - sort trees
         tournamentResults.sort(Comparator.comparingInt(Pair::getValue)); // sort by the number of wins
-        // take ELITISM best and copy them into the new generation
+        // take ELITISM_COUNT best and copy them into the new generation
         for (int i = 0; i < ELITISM_COUNT; i++) {
             nextGeneration.add(tournamentResults.get(tournamentResults.size() - i - 1).getKey());
         }
+
+        trees = nextGeneration;
     }
 
     /**

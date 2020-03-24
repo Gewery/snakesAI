@@ -2,7 +2,7 @@ package snakes.GeneticProgramming.Operations;
 
 public class Subtraction implements Operation {
     @Override
-    public float calculate(float a, float b) {
+    public double calculate(double a, double b) {
         return a - b;
     }
 }

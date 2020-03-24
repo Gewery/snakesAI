@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class GeneticProgrammingMain {
-    final static int MAX_GENERATION_COUNT = 30;
+    final static int MAX_GENERATION_COUNT = 50;
 
     public static void main(String[] args) throws InterruptedException {
         Node root = new Node(2, null);
@@ -21,10 +21,8 @@ public class GeneticProgrammingMain {
         root.right.subfunction = new ManhattanDistanceApple();
         root.left.subfunction = new CollisionWithObject();
         Population population = new Population();
-        for (int i = 0; i < MAX_GENERATION_COUNT; i++) {
-            if (i == MAX_GENERATION_COUNT - 1) {
-                int y = 0;
-            }
+        population.trees.add(root);
+        for (int i = 0; i < MAX_GENERATION_COUNT - 1; i++) {
             long time = System.currentTimeMillis();
             System.out.print("Generation: " + i + " ");
             population.makeNextGeneration();
@@ -35,6 +33,8 @@ public class GeneticProgrammingMain {
         tournamentResults.sort(Comparator.comparingInt(Pair::getValue)); // sort by the number of wins
         Node bestTree = tournamentResults.get(tournamentResults.size() - 1).getKey();
         printTree(bestTree);
+
+        new java.util.Scanner(System.in).nextLine();
 
         Bot_GP bot0 = new Bot_GP(bestTree);
         Bot bot1 = new Bot_n_strygin();

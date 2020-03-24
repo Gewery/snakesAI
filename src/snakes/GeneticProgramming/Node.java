@@ -20,7 +20,7 @@ public class Node {
      * 2 - operaton (+/-/...)
      */
     int type;
-    double constant_value;
+    double constant_value; // random double in range [-10, 10]
     Subfunction subfunction;
     Operation operation;
     Node left = null, right = null, parent = null;
@@ -85,7 +85,7 @@ public class Node {
 
     private void NodeInit() {
         switch (this.type) {
-            case 0: constant_value = rn.nextDouble(); break;
+            case 0: constant_value = rn.nextDouble() * 20 - 10; break; // generating double in range [-10, 10]
             case 1: subfunction = availableSubfunctions.get(rn.nextInt(availableSubfunctions.size())); break;
             case 2: operation = availableOperations.get(rn.nextInt(availableOperations.size())); break;
         }

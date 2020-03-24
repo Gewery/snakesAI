@@ -15,10 +15,10 @@ public class Bot_GP implements Bot {
     @Override
     public Direction chooseDirection(Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
         Direction best_direction = null;
-        float max_score = -Float.MAX_VALUE;
+        double max_score = -Float.MAX_VALUE;
 
         for (Direction to : Direction.values()) {
-            float cur = root.computeValue(to, snake, opponent, mazeSize, apple);
+            double cur = root.computeValue(to, snake, opponent, mazeSize, apple);
             if (cur >= max_score) {
                 max_score = cur;
                 best_direction = to;

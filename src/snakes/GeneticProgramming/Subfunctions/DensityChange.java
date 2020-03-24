@@ -73,6 +73,6 @@ public class DensityChange implements Subfunction {
             counter += 1;
         }
 
-        return hit / counter;
+        return 1.0 * hit / counter;
     }
 }
