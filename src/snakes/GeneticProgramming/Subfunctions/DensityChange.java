@@ -20,17 +20,17 @@ public class DensityChange implements Subfunction {
      */
     @Override
     public double value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
-        int grid_x = findLeastDivisor(mazeSize.x);
-        int grid_y = findLeastDivisor(mazeSize.y);
+        int gridX = findLeastDivisor(mazeSize.x);
+        int gridY = findLeastDivisor(mazeSize.y);
 
         Coordinate head = snake.getHead();
         Coordinate headMoved = head.moveTo(direction);
 
-        double densityInitial = calculateDensity(head, snake, opponent, grid_x, grid_y);
-        double densityIFinal = calculateDensity(headMoved, snake, opponent, grid_x, grid_y);
+        double densityInitial = calculateDensity(head, snake, opponent, gridX, gridY);
+        double densityIFinal = calculateDensity(headMoved, snake, opponent, gridX, gridY);
 
         // positive - next area with lower density, negative - next area with higher density
-        return (densityInitial - densityIFinal) / (grid_x * grid_y);
+        return (densityInitial - densityIFinal) / (gridX * gridY);
     }
 
     private int findLeastDivisor(int n) {
@@ -46,24 +46,24 @@ public class DensityChange implements Subfunction {
         }
     }
 
-    private double calculateDensity(Coordinate head, Snake snake, Snake opponent, int grid_x, int grid_y) {
-        int min_x = (int) Math.floor((float) head.x / grid_x) * grid_x;
-        int min_y = (int) Math.floor((float) head.x / grid_x) * grid_y;
+    private double calculateDensity(Coordinate head, Snake snake, Snake opponent, int gridX, int gridY) {
+        int minX = (int) Math.floor((float) head.x / gridX) * gridX;
+        int minY = (int) Math.floor((float) head.x / gridX) * gridY;
 
-        int max_x = (int) (Math.ceil((float) head.x / grid_x) * grid_x);
-        int max_y = (int) (Math.ceil((float) head.y / grid_y) * grid_y);
+        int maxX = (int) (Math.ceil((float) head.x / gridX) * gridX);
+        int maxY = (int) (Math.ceil((float) head.y / gridY) * gridY);
 
         ArrayList<Coordinate> coordinatesFromBlock = new ArrayList<>();
 
 
-        for (int x = min_x; x < max_x; x++) {
-            for (int y = min_y; y < max_y; y++) {
+        for (int x = minX; x < maxX; x++) {
+            for (int y = minY; y < maxY; y++) {
                 coordinatesFromBlock.add(new Coordinate(x, y));
             }
         }
 
-        int counter = 0;
-        int hit = 0;
+        int counter = 0, hit = 0;
+
         for (Coordinate bodyPiece : coordinatesFromBlock) {
             if (snake.elements.contains(bodyPiece)) {
                 hit += 1;

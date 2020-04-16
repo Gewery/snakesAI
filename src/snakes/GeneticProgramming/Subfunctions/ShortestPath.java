@@ -4,7 +4,9 @@ import snakes.Coordinate;
 import snakes.Direction;
 import snakes.Snake;
 
-abstract class ShortestPath implements Subfunction {
+import java.util.Arrays;
+
+abstract class ShortestPath extends ManhattanDistance implements Subfunction {
     /**
      * Given game state and direction calculates the distance to object from given direction
      *
@@ -18,22 +20,57 @@ abstract class ShortestPath implements Subfunction {
     @Override
     abstract public double value(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple);
 
-    protected float calculateShortestPath(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize) {
-        return 0;
+    /**
+     * Calculate shortest distance from source to destination
+     *
+     * @param source      Starting coordinate
+     * @param destination Finish coordinate
+     * @param snake       information about current snake
+     * @param opponent    information about opponent's snake
+     * @param mazeSize    boardSize
+     * @param apple       apple's coordinate
+     * @return Shortest distance from source to destination
+     */
+    protected float calculateShortestPath(Coordinate source, Coordinate destination,
+                                          Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
+
+
+        LeeAlgorithm leeAlgorithm = new LeeAlgorithm(mazeSize);
+
+        int[][] board = buildBoard(snake, opponent, mazeSize, apple);
+
+        return leeAlgorithm.calculateShortestPath(board, source, destination);
     }
 
     /**
-     * Queue node used in BFS
+     * Constructs new board with obstacles such as snakes and apples to compute distances on it
+     *
+     * @param snake    information about current snake
+     * @param opponent information about opponent's snake
+     * @param mazeSize boardSize
+     * @param apple    apple's coordinate
+     * @return new board with obstacles
      */
-    class Node {
-        // (x, y) represents matrix cell coordinates
-        // dist represent its minimum distance from the source
-        int x, y, dist;
+    protected int[][] buildBoard(Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
+        // 1 - valid path, 0 - wall, obstacle
+        int[][] board = new int[mazeSize.x][mazeSize.y];
+        int[] row = new int[mazeSize.x];
+        Arrays.fill(row, 1);
+        Arrays.fill(board, row);
 
-        Node(int x, int y, int dist) {
-            this.x = x;
-            this.y = y;
-            this.dist = dist;
+        for (Coordinate bodyCell : snake.body) {
+            board[bodyCell.x][bodyCell.y] = 0;
         }
+
+        for (Coordinate bodyCell : opponent.body) {
+            board[bodyCell.x][bodyCell.y] = 0;
+        }
+
+        board[apple.x][apple.y] = 0;
+
+        return board;
     }
 }
+
+
+
