@@ -10,6 +10,9 @@ import java.util.Random;
  * Run game for two bots
  */
 public class SnakeGame {
+
+    private static final Boolean WRITE_TO_LOG = false;
+
     private static final String LOG_FILE = "log.txt";
     private static final long TIMEOUT_THRESHOLD = 1;// timeout threshold for taking a decision in seconds
     public final Snake snake0, snake1;
@@ -134,7 +137,8 @@ public class SnakeGame {
      * @return whether to continue the game
      */
     public boolean runOneStep() throws InterruptedException {
-        //output(toString());
+        if (WRITE_TO_LOG)
+            output(toString());
 
         // the first bot takes a decision of next move
 
@@ -181,8 +185,8 @@ public class SnakeGame {
         }
 
 
-        //output("snake0->" + d0 + ", snake1->" + d1);
-        //output("Apples eaten: " + appleEaten0 + " - " + appleEaten1);
+        if (WRITE_TO_LOG)  output("snake0->" + d0 + ", snake1->" + d1);
+        if (WRITE_TO_LOG)  output("Apples eaten: " + appleEaten0 + " - " + appleEaten1);
 
         //var grow = move % 3 == 2;
         boolean grow0 = snake0.getHead().moveTo(d0).equals(appleCoordinate);
@@ -214,7 +218,7 @@ public class SnakeGame {
             else if (s0dead && s1dead)
                 result = (appleEaten0 > appleEaten1 ? 1 : 0) + " - " + (appleEaten1 > appleEaten0 ? 1 : 0);
 
-            //output("Result: " + result);
+            if (WRITE_TO_LOG) output("Result: " + result);
             gameResult += result;
         }
         return cont;
@@ -231,14 +235,18 @@ public class SnakeGame {
                 return;
             }
 
-        //output(gameResult);
+        if (WRITE_TO_LOG) output(gameResult);
     }
 
     /**
      * Runs game without any pauses
      */
     public void runWithoutPauses(int steps_allowed) throws InterruptedException {
+
+        long time = System.currentTimeMillis();
         while (steps_allowed-- > 0 && runOneStep());
+        //System.out.print(900 - steps_allowed);
+        //System.out.println(" : " + 1.0 * (System.currentTimeMillis() - time) / 1000 + " seconds (" + (1.0 * (System.currentTimeMillis() - time) / (900 - steps_allowed)) + " mills per step)");
         if (steps_allowed == 0 && gameResult.equals("0 - 0")) {
             int snake0_size = snake0.body.size();
             int snake1_size = snake1.body.size();

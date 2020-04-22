@@ -11,9 +11,9 @@ import java.util.Comparator;
 import java.util.Random;
 
 public class Population {
-    final int POPULATION_SIZE = 10; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
+    final int POPULATION_SIZE = 16; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
     final int ELITISM_COUNT = 4; // must be less or equal to POPULATION_SIZE
-    final int PARENTS_SELECTION_GROUP_SIZE = 4;
+    final int PARENTS_SELECTION_GROUP_SIZE = 8;
 
     final int MAX_MUTATION_HEIGHT_SUBTREE = 4; // max height that can be added to a tree after mutation
     final int NUMBER_OF_TOURNAMENT_RUNS = 1;
@@ -46,7 +46,7 @@ public class Population {
         }
     }
 
-    public void makeNextGeneration() throws InterruptedException {
+    public Node makeNextGeneration() throws InterruptedException { // TODO remove return value
         ArrayList<Integer> parentsSelectionGroupIndices = new ArrayList<>();
         for (int i = 0; i < POPULATION_SIZE; i++)
             parentsSelectionGroupIndices.add(i);
@@ -111,6 +111,7 @@ public class Population {
         }
 
         trees = nextGeneration;
+        return tournamentResults.get(tournamentResults.size() - 1).getKey();
     }
 
     /**
@@ -123,9 +124,9 @@ public class Population {
     public ArrayList<Pair<Node, Integer>> runTournamentNTimes(ArrayList<Node> participantsTrees, int n) throws InterruptedException {
         // Initial game settings
         Coordinate mazeSize = new Coordinate(14, 14);
-        Coordinate head0 = new Coordinate(5, 5);
+        Coordinate head0 = new Coordinate(6, 5);
         Direction tailDirection0 = Direction.DOWN;
-        Coordinate head1 = new Coordinate(8, 8);
+        Coordinate head1 = new Coordinate(6, 8);
         Direction tailDirection1 = Direction.UP;
         int snakeSize = 3;
 
@@ -146,8 +147,11 @@ public class Population {
                     Bot_GP bot1 = new Bot_GP(participantsTrees.get(bot1ind));
                     SnakeGame game = new SnakeGame(mazeSize, head0, tailDirection0, head1, tailDirection1, snakeSize, bot0, bot1);
                     game.runWithoutPauses(STEPS_PER_GAME);
-                    tournamentResults[bot0ind] += Integer.parseInt(game.gameResult.substring(0, 1));
-                    tournamentResults[bot1ind] += Integer.parseInt(game.gameResult.substring(game.gameResult.length() - 1));
+                    // score = (win ? 1 : 0) * 10 + applesEaten
+                    tournamentResults[bot0ind] += 10 * Integer.parseInt(game.gameResult.substring(0, 1));
+                    tournamentResults[bot1ind] += 10 * Integer.parseInt(game.gameResult.substring(game.gameResult.length() - 1));
+                    tournamentResults[bot0ind] += game.appleEaten0;
+                    tournamentResults[bot1ind] += game.appleEaten1;
                 }
         }
 

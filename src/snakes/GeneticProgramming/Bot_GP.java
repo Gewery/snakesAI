@@ -6,7 +6,7 @@ import snakes.Direction;
 import snakes.Snake;
 
 public class Bot_GP implements Bot {
-    Node root;
+    static Node root;
 
     public Bot_GP(Node root) {
         this.root = root;
@@ -29,5 +29,18 @@ public class Bot_GP implements Bot {
         }
 
         return best_direction;
+    }
+
+    public static String TreeTraverse() {
+        return printTree(root);
+    }
+
+    private static String printTree(Node t) {
+        switch (t.type) {
+            case 0: return "\nconstant_value: " + t.constant_value;
+            case 1: return "\nsubfunction: " + t.subfunction.getClass();
+            case 2: return "\noperation: " + t.operation.getClass() + printTree(t.left) + printTree(t.right);
+        }
+        return "";
     }
 }

@@ -27,7 +27,8 @@ class LeeAlgorithm {
     int calculateShortestPath(int[][] board, Coordinate src, Coordinate dest) {
 
         // check source and destination cell of the matrix have value 1
-        if (board[src.x][src.y] != 1 || board[dest.x][dest.y] != 1)
+
+        if (!isValid(src.x, src.y) || !isValid(dest.x, dest.y) || board[src.x][src.y] != 1 || board[dest.x][dest.y] != 1)
             return -2;
 
         boolean[][] visited = new boolean[ROW][COL];
