@@ -30,7 +30,7 @@ public class OperationsLoader {
 
                     // Load the target class using its binary name
                     Class<?> loadedMyClass = classLoader.loadClass("snakes.GeneticProgramming.Operations." + subfunctionName);
-                    System.out.println("Loaded class name: " + loadedMyClass.getName());
+                    //System.out.println("Loaded class name: " + loadedMyClass.getName());
 
                     Class<? extends Operation> operationClass = loadedMyClass.asSubclass(Operation.class);
                     if (Modifier.isAbstract(operationClass.getModifiers())) { // if class is abstract - do not load it

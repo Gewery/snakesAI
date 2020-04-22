@@ -32,11 +32,11 @@ public class SubfunctionsLoader {
                     // Load the target class using its binary name
                     Class<?> loadedMyClass = classLoader.loadClass("snakes.GeneticProgramming.Subfunctions." + subfunctionName);
                     if (!Subfunction.class.isAssignableFrom(loadedMyClass)) {
-                        System.out.println("Class " + loadedMyClass.getName() + " doesn't implement " + Subfunction.class.getName() + " interface. Class skipped");
+                        //System.out.println("Class " + loadedMyClass.getName() + " doesn't implement " + Subfunction.class.getName() + " interface. Class skipped");
                         continue;
                     }
 
-                    System.out.println("Loaded class name: " + loadedMyClass.getName());
+                    //System.out.println("Loaded class name: " + loadedMyClass.getName());
 
                     Class<? extends Subfunction> subfunctionClass = loadedMyClass.asSubclass(Subfunction.class);
                     if (Modifier.isAbstract(subfunctionClass.getModifiers())) { // if class is abstract - do not load it

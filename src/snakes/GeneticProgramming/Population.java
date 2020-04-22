@@ -11,9 +11,9 @@ import java.util.Comparator;
 import java.util.Random;
 
 public class Population {
-    final int POPULATION_SIZE = 16; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
-    final int ELITISM_COUNT = 4; // must be less or equal to POPULATION_SIZE
-    final int PARENTS_SELECTION_GROUP_SIZE = 8;
+    final int POPULATION_SIZE = 50; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
+    final int ELITISM_COUNT = 10; // must be less or equal to POPULATION_SIZE
+    final int PARENTS_SELECTION_GROUP_SIZE = 10;
 
     final int MAX_MUTATION_HEIGHT_SUBTREE = 4; // max height that can be added to a tree after mutation
     final int NUMBER_OF_TOURNAMENT_RUNS = 1;

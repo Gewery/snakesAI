@@ -1,0 +1,918 @@
+POPULATION_SIZE = 16 ELITISM_COUNT = 4 PARENTS_SELECTION_GROUP_SIZE = 8
+
+Generation: 0
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 25 seconds
+
+Generation: 1
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 2
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -5.257157006343631
+Time taken: 2 seconds
+
+Generation: 3
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -5.257157006343631
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 4
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -5.257157006343631
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 5
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 6
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -5.257157006343631
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 7
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+constant_value: 6.9471528742025335
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+Time taken: 2 seconds
+
+Generation: 8
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -5.257157006343631
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 9
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -5.257157006343631
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -5.257157006343631
+Time taken: 2 seconds
+
+Generation: 10
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 11
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 12
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 13
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 14
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+constant_value: -0.8543383159985467
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 15
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 16
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 17
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+Time taken: 2 seconds
+
+Generation: 18
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+constant_value: -0.8543383159985467
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 19
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -0.8543383159985467
+Time taken: 3 seconds
+
+Generation: 20
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 21
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 22
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 23
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+Time taken: 3 seconds
+
+Generation: 24
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: 6.9471528742025335
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 25
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+constant_value: -4.45475038228353
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -0.8543383159985467
+Time taken: 2 seconds
+
+Generation: 26
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 27
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+constant_value: -4.45475038228353
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -0.8543383159985467
+Time taken: 2 seconds
+
+Generation: 28
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+constant_value: -4.45475038228353
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+constant_value: -0.8543383159985467
+Time taken: 2 seconds
+
+Generation: 29
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: -0.8543383159985467
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+constant_value: 6.9471528742025335
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 30
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+constant_value: 6.9471528742025335
+constant_value: 6.9471528742025335
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+constant_value: -4.45475038228353
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -0.8543383159985467
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+Time taken: 2 seconds
+
+Generation: 31
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+operation: class snakes.GeneticProgramming.Operations.Pow
+constant_value: 5.720018056913458
+constant_value: 5.720018056913458
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+Time taken: 2 seconds
+
+Generation: 32
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+operation: class snakes.GeneticProgramming.Operations.Pow
+constant_value: 6.9471528742025335
+constant_value: 0.4736136177557366
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+constant_value: -0.8543383159985467
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+Time taken: 2 seconds
+
+Generation: 33
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: -0.8543383159985467
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+constant_value: 6.9471528742025335
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 2 seconds
+
+Generation: 34
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: -0.8543383159985467
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+constant_value: 6.9471528742025335
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 3 seconds
+
+Generation: 35
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+operation: class snakes.GeneticProgramming.Operations.Pow
+constant_value: 6.9471528742025335
+constant_value: 0.4736136177557366
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 6.9471528742025335
+constant_value: -0.8543383159985467
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+Time taken: 2 seconds
+
+Generation: 36
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+operation: class snakes.GeneticProgramming.Operations.Pow
+constant_value: 5.720018056913458
+constant_value: 5.720018056913458
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Pow
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 0.4736136177557366
+Time taken: 2 seconds
+
+Generation: 37
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+operation: class snakes.GeneticProgramming.Operations.Pow
+constant_value: 5.720018056913458
+constant_value: 5.720018056913458
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Pow
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 0.4736136177557366
+Time taken: 3 seconds
+
+Generation: 38
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+operation: class snakes.GeneticProgramming.Operations.Pow
+constant_value: 5.720018056913458
+constant_value: 5.720018056913458
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Pow
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 0.4736136177557366
+Time taken: 3 seconds
+
+Generation: 39
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Pow
+operation: class snakes.GeneticProgramming.Operations.Pow
+constant_value: 5.720018056913458
+constant_value: 5.720018056913458
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Pow
+operation: class snakes.GeneticProgramming.Operations.Pow
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 5.720018056913458
+constant_value: 0.4736136177557366
+Time taken: 3 seconds
+
+Generation: 40
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+operation: class snakes.GeneticProgramming.Operations.Pow
+constant_value: 6.9471528742025335
+constant_value: 0.4736136177557366
+constant_value: 6.9471528742025335
+constant_value: 6.9471528742025335
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 3 seconds
+
+Generation: 41
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: 5.720018056913458
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+subfunction: class snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple
+constant_value: 6.9471528742025335
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Division
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Addition
+operation: class snakes.GeneticProgramming.Operations.Addition
+constant_value: -4.45475038228353
+operation: class snakes.GeneticProgramming.Operations.Pow
+constant_value: 6.9471528742025335
+constant_value: 0.4736136177557366
+constant_value: 6.9471528742025335
+constant_value: 6.9471528742025335
+constant_value: -0.8543383159985467
+constant_value: -4.45475038228353
+Time taken: 3 seconds
+

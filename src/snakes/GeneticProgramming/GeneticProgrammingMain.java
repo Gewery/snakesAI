@@ -8,68 +8,50 @@ import snakes.GeneticProgramming.Operations.Subtraction;
 import snakes.GeneticProgramming.Subfunctions.CollisionWithObject;
 import snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 
 public class GeneticProgrammingMain {
     final static int MAX_GENERATION_COUNT = 200;
+    private static FileWriter output;
+
 // NOTE: fitness function (or score) = (number of won games) * 10 + apples eaten
-    public static void main(String[] args) throws InterruptedException {
-        Node root = new Node(2, null);
-        root.operation = new Subtraction();
-        root.left = new Node(1, root);
-        root.right = new Node(1, root);
-        root.right.subfunction = new ManhattanDistanceApple();
-        root.left.subfunction = new CollisionWithObject();
+    public static void main(String[] args) throws InterruptedException, IOException {
         Population population = new Population();
-        //population.trees.add(root);
-        for (int i = 0; i < MAX_GENERATION_COUNT; i++) {
+
+        output = new FileWriter("output.txt", false);
+        output.write("POPULATION_SIZE = " + population.POPULATION_SIZE + " ELITISM_COUNT = " + population.ELITISM_COUNT + " PARENTS_SELECTION_GROUP_SIZE = " + population.PARENTS_SELECTION_GROUP_SIZE + "\n\n");
+        output.close();
+
+        int generationNumber = 0;
+        while (true) {
+            output = new FileWriter("output.txt", true);
             long time = System.currentTimeMillis();
-            System.out.println("Generation: " + i + " ");
+            output.write("Generation: " + generationNumber + "\n");
+            //System.out.println("Generation: " + generationNumber + " ");
+            generationNumber += 1;
             Node best_prev_gen = population.makeNextGeneration();
 
             printTree(best_prev_gen);
 
-            System.out.println("Time taken: " + (System.currentTimeMillis() - time) / 1000 + " seconds\n");
+            output.write("Time taken: " + (System.currentTimeMillis() - time) / 1000 + " seconds\n\n");
+            //System.out.println("Time taken: " + (System.currentTimeMillis() - time) / 1000 + " seconds\n");
+            output.close();
         }
 
-        ArrayList<Pair<Node, Integer>> tournamentResults = population.runTournamentNTimes(population.trees, population.NUMBER_OF_TOURNAMENT_RUNS);
-        tournamentResults.sort(Comparator.comparingInt(Pair::getValue)); // sort by the number of wins
-        Node bestTree = tournamentResults.get(tournamentResults.size() - 1).getKey(); // find the best tree
-        printTree(bestTree);
-
-        //new java.util.Scanner(System.in).nextLine();
-
-        // Play the best tree vs Bot_D_Kabirov() 3 times:
-
-        Bot_GP bot0 = new Bot_GP(bestTree);
-        Bot bot1 = new Bot_D_Kabirov();
-
-        Coordinate mazeSize = new Coordinate(14, 14);
-        Coordinate head0 = new Coordinate(6, 5);
-        Direction tailDirection0 = Direction.DOWN;
-        Coordinate head1 = new Coordinate(6, 8);
-        Direction tailDirection1 = Direction.UP;
-        int snakeSize = 3;
-
-        for (int i = 0; i < 3; i++) {
-            SnakeGame game = new SnakeGame(mazeSize, head0, tailDirection0, head1, tailDirection1, snakeSize, bot0, bot1);
-            SnakesWindow window = new SnakesWindow(game);
-            Thread t = new Thread(window);
-            t.start();
-            t.join();
-
-            Thread.sleep(1000); // to allow users see the result
-            window.closeWindow();
-            System.out.println(game.gameResult);
-        }
+//        ArrayList<Pair<Node, Integer>> tournamentResults = population.runTournamentNTimes(population.trees, population.NUMBER_OF_TOURNAMENT_RUNS);
+//        tournamentResults.sort(Comparator.comparingInt(Pair::getValue)); // sort by the number of wins
+//        Node bestTree = tournamentResults.get(tournamentResults.size() - 1).getKey(); // find the best tree
+//        printTree(bestTree);
     }
 
-    static void printTree(Node t) {
+    static void printTree(Node t) throws IOException {
         switch (t.type) {
-            case 0: System.out.println("constant_value: " + t.constant_value); break;
-            case 1: System.out.println("subfunction: " + t.subfunction.getClass()); break;
-            case 2: System.out.println("operation: " + t.operation.getClass()); printTree(t.left); printTree(t.right); break;
+            case 0: output.write("constant_value: " + t.constant_value + "\n"); break;
+            case 1: output.write("subfunction: " + t.subfunction.getClass() + "\n"); break;
+            case 2: output.write("operation: " + t.operation.getClass() + "\n"); printTree(t.left); printTree(t.right); break;
         }
     }
 }
