@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class SnakesUIMain {
     private static final String LOG_DIRECTORY_PATH = "logs";
     private static FileWriter results_fw;
-    private static int[][] total_results_table;
+    public static int[][] total_results_table;
 
     /**
      * UI Entry point
@@ -49,19 +49,19 @@ public class SnakesUIMain {
         }
         for (int i = 0; i < n; i++) {
             System.out.println("\nTournament iteration number " + i + "\n");
-            results_fw = new FileWriter(String.format("%s\\iteration_%d.txt", LOG_DIRECTORY_PATH, i), false);
+//            results_fw = new FileWriter(String.format("%s\\iteration_%d.txt", LOG_DIRECTORY_PATH, i), false);
             start_round_robin_tournament(bots);
-            results_fw.close();
+//            results_fw.close();
         }
 
-        results_fw = new FileWriter(String.format("%s\\total.txt", LOG_DIRECTORY_PATH), false);
+//        results_fw = new FileWriter(String.format("%s\\total.txt", LOG_DIRECTORY_PATH), false);
         for (int i = 0; i < bots.size(); i++)
             for (int j = i + 1; j < bots.size(); j++) {
                 if (bots.get(i) == null || bots.get(j) == null) continue;
                 System.out.println("\n" + bots.get(i).getClass().getSimpleName() + " vs. " + bots.get(j).getClass().getSimpleName() + ": " + total_results_table[i][j] + " - " + total_results_table[j][i]);
-                results_fw.write(bots.get(i).getClass().getSimpleName() + " vs. " + bots.get(j).getClass().getSimpleName() + ": " + total_results_table[i][j] + " - " + total_results_table[j][i] + "\n");
+//                results_fw.write(bots.get(i).getClass().getSimpleName() + " vs. " + bots.get(j).getClass().getSimpleName() + ": " + total_results_table[i][j] + " - " + total_results_table[j][i] + "\n");
             }
-        results_fw.close();
+//        results_fw.close();
     }
 
     /**
@@ -115,8 +115,8 @@ public class SnakesUIMain {
                 window.closeWindow();
 
                 float time_taken = (float)(System.currentTimeMillis() - game.startTime) / 1000;
-                results_fw.write(game.name0 + " vs " + game.name1 + " : " + game.gameResult + "");
-                results_fw.write(" (Time taken: " + time_taken + ")\n");
+//                results_fw.write(game.name0 + " vs " + game.name1 + " : " + game.gameResult + "");
+//                results_fw.write(" (Time taken: " + time_taken + ")\n");
                 System.out.print(game.name0 + " vs " + game.name1 + " : " + game.gameResult);
                 System.out.println(" (Time taken: " + time_taken + ")");
 
@@ -147,12 +147,12 @@ public class SnakesUIMain {
             playerNumber.set(1, buffer_player_number);
         }
 
-        results_fw.write("\n-------------------------------------------\n\n");
+//        results_fw.write("\n-------------------------------------------\n\n");
         // get and print the results
         for (int i = 0; i < bots.size(); i++) {
             if (bots.get(i) == null) continue;
             System.out.println(bots_names.get(playerNumber.get(i)) + " earned: " + points.get(playerNumber.get(i)).toString());
-            results_fw.write(bots_names.get(playerNumber.get(i)) + " earned: " + points.get(playerNumber.get(i)).toString() + "\n");
+//            results_fw.write(bots_names.get(playerNumber.get(i)) + " earned: " + points.get(playerNumber.get(i)).toString() + "\n");
         }
     }
 }

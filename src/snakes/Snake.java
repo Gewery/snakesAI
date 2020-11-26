@@ -36,7 +36,7 @@ public class Snake implements Cloneable {
      * @param mazeSize    size of the board
      */
     public Snake(Coordinate initialHead, Coordinate mazeSize) {
-        this(mazeSize, new HashSet<Coordinate>(), new LinkedList<Coordinate>());
+        this(mazeSize, new HashSet<>(), new LinkedList<>());
 
         body.addFirst(initialHead);
         elements.add(initialHead);

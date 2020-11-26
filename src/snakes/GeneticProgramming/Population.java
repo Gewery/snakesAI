@@ -11,15 +11,15 @@ import java.util.Comparator;
 import java.util.Random;
 
 public class Population {
-    final int POPULATION_SIZE = 50; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
+    final int POPULATION_SIZE = 90; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
     final int ELITISM_COUNT = 10; // must be less or equal to POPULATION_SIZE
-    final int PARENTS_SELECTION_GROUP_SIZE = 10;
+    final int PARENTS_SELECTION_GROUP_SIZE = 4;
 
     final int MAX_MUTATION_HEIGHT_SUBTREE = 4; // max height that can be added to a tree after mutation
-    final int NUMBER_OF_TOURNAMENT_RUNS = 1;
-    final int STEPS_PER_GAME = 900; // number of steps allowed for one game
+    final int NUMBER_OF_TOURNAMENT_RUNS = 1; //each population runs a tournament this number of times
+    final int STEPS_PER_GAME = 120; // number of steps allowed for one game = 2 mins = 2 * 60
     final double MUTATION_PROBABILITY = 0.03;
-    final double CROSSOVER_PROBABILITY = 0.5;
+    final double CROSSOVER_PROBABILITY = 1;
 
     ArrayList<Node> trees = new ArrayList<>();
     Random rn = new Random();
@@ -47,46 +47,32 @@ public class Population {
     }
 
     public Node makeNextGeneration() throws InterruptedException { // TODO remove return value
-        ArrayList<Integer> parentsSelectionGroupIndices = new ArrayList<>();
-        for (int i = 0; i < POPULATION_SIZE; i++)
-            parentsSelectionGroupIndices.add(i);
+        // 0 - run the tournament between old generation's trees
+        ArrayList<Pair<Node, Integer>> tournamentResults = runTournamentNTimes(trees, NUMBER_OF_TOURNAMENT_RUNS);
+        // 1 - sort trees
+        tournamentResults.sort(Comparator.comparingInt(Pair::getValue)); // sort by the number of wins
 
         ArrayList<Node> nextGeneration = new ArrayList<>();
         // crossover stage
         for (int i = 0; i < POPULATION_SIZE - ELITISM_COUNT; i += 2) {
-            Node par1 = null, par2 = null;
-            for (int j = 0; j < 2; j++) {
-                Collections.shuffle(parentsSelectionGroupIndices);
-                ArrayList<Node> parentsSelectionGroup = new ArrayList<>();
-
-                for (int k = 0; k < PARENTS_SELECTION_GROUP_SIZE; k++)
-                    parentsSelectionGroup.add(trees.get(parentsSelectionGroupIndices.get(k)));
-
-                ArrayList<Pair<Node, Integer>> tournamentResults = runTournamentNTimes(parentsSelectionGroup, NUMBER_OF_TOURNAMENT_RUNS);
-                Node best_tree = null;
-                int max_score = -1;
-                for (Pair<Node, Integer> tournamentResult : tournamentResults) { // choosing the best Node
-                    if (tournamentResult.getValue() > max_score) {
-                        max_score = tournamentResult.getValue();
-                        best_tree = tournamentResult.getKey();
-                    }
+            int max1 = -1, max2 = -1;
+            for (int j = 0; j < PARENTS_SELECTION_GROUP_SIZE; j++) {
+                int randInd = rn.nextInt(POPULATION_SIZE);
+                if (randInd > max1) {
+                    max2 = max1;
+                    max1 = randInd;
                 }
-                if (par1 == null) {
-                    par1 = best_tree;
-                    trees.remove(best_tree);
-                    parentsSelectionGroupIndices.remove(Integer.valueOf(trees.size()));
-                } else {
-                    par2 = best_tree;
+                else if (randInd > max2) {
+                    max2 = randInd;
                 }
             }
-            parentsSelectionGroupIndices.add(trees.size());
-            trees.add(par1);
+            Node par1 = tournamentResults.get(max1).getKey();
+            Node par2 = tournamentResults.get(max2).getKey();
 
             Pair<Node, Node> children;
             if (rn.nextDouble() <= CROSSOVER_PROBABILITY) {
                 children = crossover(copyTree(par1), copyTree(par2));
-            }
-            else {
+            } else {
                 children = new Pair<>(par1, par2);
             }
             nextGeneration.add(children.getKey());
@@ -101,10 +87,6 @@ public class Population {
         }
 
         // elitism stage
-        // 0 - run the tournament between old generation's trees
-        ArrayList<Pair<Node, Integer>> tournamentResults = runTournamentNTimes(trees, NUMBER_OF_TOURNAMENT_RUNS);
-        // 1 - sort trees
-        tournamentResults.sort(Comparator.comparingInt(Pair::getValue)); // sort by the number of wins
         // take ELITISM_COUNT best and copy them into the new generation
         for (int i = 0; i < ELITISM_COUNT; i++) {
             nextGeneration.add(tournamentResults.get(tournamentResults.size() - i - 1).getKey());
@@ -148,8 +130,8 @@ public class Population {
                     SnakeGame game = new SnakeGame(mazeSize, head0, tailDirection0, head1, tailDirection1, snakeSize, bot0, bot1);
                     game.runWithoutPauses(STEPS_PER_GAME);
                     // score = (win ? 1 : 0) * 10 + applesEaten
-                    tournamentResults[bot0ind] += 10 * Integer.parseInt(game.gameResult.substring(0, 1));
-                    tournamentResults[bot1ind] += 10 * Integer.parseInt(game.gameResult.substring(game.gameResult.length() - 1));
+//                    tournamentResults[bot0ind] += 10 * Integer.parseInt(game.gameResult.substring(0, 1));
+//                    tournamentResults[bot1ind] += 10 * Integer.parseInt(game.gameResult.substring(game.gameResult.length() - 1));
                     tournamentResults[bot0ind] += game.appleEaten0;
                     tournamentResults[bot1ind] += game.appleEaten1;
                 }

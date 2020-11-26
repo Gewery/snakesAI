@@ -118,6 +118,7 @@ public class SnakeGame {
             return;
         }
 
+
         try {
             fw.write(text + "\n");
         } catch (IOException e) {
@@ -184,10 +185,6 @@ public class SnakeGame {
             return false;
         }
 
-
-        if (WRITE_TO_LOG)  output("snake0->" + d0 + ", snake1->" + d1);
-        if (WRITE_TO_LOG)  output("Apples eaten: " + appleEaten0 + " - " + appleEaten1);
-
         //var grow = move % 3 == 2;
         boolean grow0 = snake0.getHead().moveTo(d0).equals(appleCoordinate);
         boolean grow1 = snake1.getHead().moveTo(d1).equals(appleCoordinate);
@@ -204,6 +201,9 @@ public class SnakeGame {
         }
         s0dead |= snake0.headCollidesWith(snake1);
         s1dead |= snake1.headCollidesWith(snake0);
+
+        if (WRITE_TO_LOG)  output("snake0->" + d0 + ", snake1->" + d1);
+        if (WRITE_TO_LOG)  output("Apples eaten: " + appleEaten0 + " - " + appleEaten1);
 
         /* stopping game condition
             - one of snakes collides with something

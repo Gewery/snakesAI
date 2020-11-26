@@ -15,21 +15,19 @@ import java.util.Random;
 public class Node {
     /**
      * type - defines what is stored in this node
-     * 0 - constant value
      * 1 - subfunction
      * 2 - operaton (+/-/...)
      */
     int type;
-    double constant_value; // random double in range [-10, 10]
+    double constantValue; // random double in range [-10, 10]
     Subfunction subfunction;
     Operation operation;
     Node left = null, right = null, parent = null;
     Random rn = new Random();
     static ArrayList<Subfunction> availableSubfunctions = new SubfunctionsLoader().getAllSubfunctions();
     static ArrayList<Operation> availableOperations = new OperationsLoader().getAllOperations();
-    final static double CONSTANT_VALUE_PROBABILITY = 0.2;
-    final static double SUBFUNCTION_PROBABILITY = 0.3;
-    final static double OPERATION_PROBABILITY = 1 - CONSTANT_VALUE_PROBABILITY - SUBFUNCTION_PROBABILITY;
+    final static double SUBFUNCTION_PROBABILITY = 0.5;
+    final static double OPERATION_PROBABILITY = 1 - SUBFUNCTION_PROBABILITY;
 
 
     // fix chosing parents
@@ -53,9 +51,7 @@ public class Node {
      */
     public Node(Node parent) {
         int rnd = rn.nextInt(3);
-        if (rnd < CONSTANT_VALUE_PROBABILITY)
-            type = 0;
-        else if (rnd < CONSTANT_VALUE_PROBABILITY + SUBFUNCTION_PROBABILITY)
+        if (rnd < SUBFUNCTION_PROBABILITY)
             type = 1;
         else
             type = 2;
@@ -72,7 +68,7 @@ public class Node {
      */
     public Node(Node t, Node leftChild, Node rightChild) {
         this.type = t.type;
-        this.constant_value = t.constant_value;
+        this.constantValue = t.constantValue;
         this.subfunction = t.subfunction;
         this.operation = t.operation;
         this.left = leftChild;
@@ -85,16 +81,17 @@ public class Node {
 
     private void NodeInit() {
         switch (this.type) {
-            case 0: constant_value = rn.nextDouble() * 20 - 10; break; // generating double in range [-10, 10]
-            case 1: subfunction = availableSubfunctions.get(rn.nextInt(availableSubfunctions.size())); break;
+            case 1:
+                subfunction = availableSubfunctions.get(rn.nextInt(availableSubfunctions.size()));
+                constantValue = rn.nextDouble() * 20 - 10; // generating double in range [-10, 10]
+                break;
             case 2: operation = availableOperations.get(rn.nextInt(availableOperations.size())); break;
         }
     }
 
     public double computeValue(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize, Coordinate apple) {
         switch (type) {
-            case 0: return constant_value;
-            case 1: return subfunction.value(direction, snake, opponent, mazeSize, apple);
+            case 1: return constantValue * subfunction.value(direction, snake, opponent, mazeSize, apple);
             case 2: return operation.calculate(left.computeValue(direction, snake, opponent, mazeSize, apple), right.computeValue(direction, snake, opponent, mazeSize, apple));
         }
 
@@ -110,8 +107,8 @@ public class Node {
             return;
 
         if (max_height == 1) { // must create leaf children
-            this.left = new Node(rn.nextInt(2), this);
-            this.right = new Node(rn.nextInt(2), this);
+            this.left = new Node(1, this);
+            this.right = new Node(1, this);
         }
         else {
             this.left = new Node(this);

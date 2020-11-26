@@ -1,17 +1,11 @@
 package snakes.GeneticProgramming;
 
 import DKabirov.Bot_D_Kabirov;
-import NStrygin.Bot_n_strygin;
-import javafx.util.Pair;
 import snakes.*;
-import snakes.GeneticProgramming.Operations.Subtraction;
-import snakes.GeneticProgramming.Subfunctions.CollisionWithObject;
-import snakes.GeneticProgramming.Subfunctions.ManhattanDistanceApple;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class GeneticProgrammingMain {
     final static int MAX_GENERATION_COUNT = 200;
@@ -25,20 +19,31 @@ public class GeneticProgrammingMain {
         output.write("POPULATION_SIZE = " + population.POPULATION_SIZE + " ELITISM_COUNT = " + population.ELITISM_COUNT + " PARENTS_SELECTION_GROUP_SIZE = " + population.PARENTS_SELECTION_GROUP_SIZE + "\n\n");
         output.close();
 
+        ArrayList<Bot> bots = new ArrayList<>();
+
+        bots.add(null);
+        bots.add(new Bot_D_Kabirov());
+
         int generationNumber = 0;
         while (true) {
             output = new FileWriter("output.txt", true);
             long time = System.currentTimeMillis();
             output.write("Generation: " + generationNumber + "\n");
-            //System.out.println("Generation: " + generationNumber + " ");
-            generationNumber += 1;
+            System.out.println("Generation: " + generationNumber + " ");
             Node best_prev_gen = population.makeNextGeneration();
 
-            printTree(best_prev_gen);
+            printTree(best_prev_gen, 0);
+
+            if (generationNumber % 10 == 0) {
+                bots.set(0, new Bot_GP(best_prev_gen));
+                SnakesUIMain.start_tournament_n_times(2, bots);
+                output.write("\n" + bots.get(0).getClass().getSimpleName() + " vs. " + bots.get(1).getClass().getSimpleName() + ": " + SnakesUIMain.total_results_table[0][1] + " - " + SnakesUIMain.total_results_table[1][0] + "\n");
+            }
 
             output.write("Time taken: " + (System.currentTimeMillis() - time) / 1000 + " seconds\n\n");
-            //System.out.println("Time taken: " + (System.currentTimeMillis() - time) / 1000 + " seconds\n");
+            System.out.println("Time taken: " + (System.currentTimeMillis() - time) / 1000 + " seconds (" + (System.currentTimeMillis() - time) / 60000.0 + " mins)\n");
             output.close();
+            generationNumber += 1;
         }
 
 //        ArrayList<Pair<Node, Integer>> tournamentResults = population.runTournamentNTimes(population.trees, population.NUMBER_OF_TOURNAMENT_RUNS);
@@ -47,11 +52,13 @@ public class GeneticProgrammingMain {
 //        printTree(bestTree);
     }
 
-    static void printTree(Node t) throws IOException {
+    static void printTree(Node t, int spaces) throws IOException {
+        for (int i = 0; i < spaces; i++)
+            output.write(' ');
         switch (t.type) {
-            case 0: output.write("constant_value: " + t.constant_value + "\n"); break;
-            case 1: output.write("subfunction: " + t.subfunction.getClass() + "\n"); break;
-            case 2: output.write("operation: " + t.operation.getClass() + "\n"); printTree(t.left); printTree(t.right); break;
+//            case 0: output.write("constant_value: " + t.constantValue + "\n"); break;
+            case 1: output.write("const * subfunction: " + t.constantValue + " * " + t.subfunction.getClass().getSimpleName() + "\n"); break;
+            case 2: output.write("operation: " + t.operation.getClass().getSimpleName() + "\n"); printTree(t.left, spaces + 4); printTree(t.right, spaces + 4); break;
         }
     }
 }
