@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implements tournament of the snake game with several rounds
@@ -41,7 +42,7 @@ public class SnakesUIMain {
      * @throws IOException FileWriter handler
      * @throws InterruptedException Threads handler
      */
-    public static void start_tournament_n_times(int n, ArrayList<Bot> bots) throws IOException, InterruptedException {
+    public static void start_tournament_n_times(int n, List<Bot> bots) throws IOException, InterruptedException {
         total_results_table = new int[bots.size() + 1][bots.size() + 1];
         File dir = new File(LOG_DIRECTORY_PATH);
         if (!dir.exists() && !dir.mkdirs()) {
@@ -70,7 +71,7 @@ public class SnakesUIMain {
      * @throws InterruptedException Threads handler
      * @throws IOException FileWriter handler
      */
-    public static void start_round_robin_tournament(ArrayList<Bot> bots) throws InterruptedException, IOException {
+    public static void start_round_robin_tournament(List<Bot> bots) throws InterruptedException, IOException {
         // init game settings
         Coordinate mazeSize = new Coordinate(14, 14);
         Coordinate head0 = new Coordinate(2, 2);

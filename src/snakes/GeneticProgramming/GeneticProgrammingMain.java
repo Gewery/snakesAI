@@ -24,7 +24,7 @@ public class GeneticProgrammingMain {
         bots.add(null);
         bots.add(new Bot_D_Kabirov());
 
-        int generationNumber = 0;
+        int generationNumber = 1;
         while (true) {
             output = new FileWriter("output.txt", true);
             long time = System.currentTimeMillis();

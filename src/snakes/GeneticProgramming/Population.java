@@ -11,7 +11,7 @@ import java.util.Comparator;
 import java.util.Random;
 
 public class Population {
-    final int POPULATION_SIZE = 90; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
+    final int POPULATION_SIZE = 40; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
     final int ELITISM_COUNT = 10; // must be less or equal to POPULATION_SIZE
     final int PARENTS_SELECTION_GROUP_SIZE = 4;
 
