@@ -3,10 +3,11 @@ package snakes.GeneticProgramming;
 import snakes.Bot;
 import snakes.Coordinate;
 import snakes.Direction;
+import snakes.GeneticProgramming.Subfunctions.DistanceToWall;
 import snakes.Snake;
 
 public class Bot_GP implements Bot {
-    static Node root;
+    private Node root;
 
     public Bot_GP(Node root) {
         this.root = root;
@@ -45,11 +46,11 @@ public class Bot_GP implements Bot {
         return best_direction;
     }
 
-    public static String TreeTraverse() {
+    public String TreeTraverse() {
         return printTree(root);
     }
 
-    private static String printTree(Node t) {
+    private String printTree(Node t) {
         switch (t.type) {
             case 0: return "\nconstant_value: " + t.constantValue;
             case 1: return "\nsubfunction: " + t.subfunction.getClass();

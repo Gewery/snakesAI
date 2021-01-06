@@ -1,24 +1,24 @@
 package snakes.GeneticProgramming;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Random;
+
 import javafx.util.Pair;
 import snakes.Coordinate;
 import snakes.Direction;
+import snakes.GeneticProgramming.Subfunctions.DistanceToWall;
 import snakes.SnakeGame;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Random;
 
 public class Population {
     final int POPULATION_SIZE = 40; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
     final int ELITISM_COUNT = 10; // must be less or equal to POPULATION_SIZE
-    final int PARENTS_SELECTION_GROUP_SIZE = 4;
+    final int PARENTS_SELECTION_GROUP_SIZE = 20;
 
     final int MAX_MUTATION_HEIGHT_SUBTREE = 4; // max height that can be added to a tree after mutation
     final int NUMBER_OF_TOURNAMENT_RUNS = 1; //each population runs a tournament this number of times
     final int STEPS_PER_GAME = 120; // number of steps allowed for one game = 2 mins = 2 * 60
-    final double MUTATION_PROBABILITY = 0.03;
+    final double MUTATION_PROBABILITY = 0.2;
     final double CROSSOVER_PROBABILITY = 1;
 
     ArrayList<Node> trees = new ArrayList<>();
@@ -61,8 +61,7 @@ public class Population {
                 if (randInd > max1) {
                     max2 = max1;
                     max1 = randInd;
-                }
-                else if (randInd > max2) {
+                } else if (randInd > max2) {
                     max2 = randInd;
                 }
             }
@@ -98,12 +97,14 @@ public class Population {
 
     /**
      * Runs a tournament between trees specified number of times
+     *
      * @param participantsTrees ArrayList with root-Nodes of trees that will participate in the tournament
-     * @param n number of tournament runs
+     * @param n                 number of tournament runs
      * @return ArrayList with pairs (Node, it's score) !Order of nodes is the same as in participantsTrees!
      * @throws InterruptedException
      */
-    public ArrayList<Pair<Node, Integer>> runTournamentNTimes(ArrayList<Node> participantsTrees, int n) throws InterruptedException {
+    public ArrayList<Pair<Node, Integer>> runTournamentNTimes(ArrayList<Node> participantsTrees, int n)
+        throws InterruptedException {
         // Initial game settings
         Coordinate mazeSize = new Coordinate(14, 14);
         Coordinate head0 = new Coordinate(6, 5);
@@ -115,7 +116,7 @@ public class Population {
         int[] tournamentResults = new int[participantsTrees.size() + 1];
 
         for (int k = 0; k < n; k++) {
-            for (int i = 0; i < participantsTrees.size(); i++)
+            for (int i = 0; i < participantsTrees.size(); i++) {
                 for (int j = i + 1; j < participantsTrees.size(); j++) {
                     int bot0ind = i;
                     int bot1ind = j;
@@ -127,19 +128,23 @@ public class Population {
 
                     Bot_GP bot0 = new Bot_GP(participantsTrees.get(bot0ind));
                     Bot_GP bot1 = new Bot_GP(participantsTrees.get(bot1ind));
-                    SnakeGame game = new SnakeGame(mazeSize, head0, tailDirection0, head1, tailDirection1, snakeSize, bot0, bot1);
+                    SnakeGame game =
+                        new SnakeGame(mazeSize, head0, tailDirection0, head1, tailDirection1, snakeSize, bot0, bot1);
                     game.runWithoutPauses(STEPS_PER_GAME);
-                    // score = (win ? 1 : 0) * 10 + applesEaten
-//                    tournamentResults[bot0ind] += 10 * Integer.parseInt(game.gameResult.substring(0, 1));
-//                    tournamentResults[bot1ind] += 10 * Integer.parseInt(game.gameResult.substring(game.gameResult.length() - 1));
+                    // score = (win ? 1 : 0) * 1000 + applesEaten
+                    tournamentResults[bot0ind] += 1000 * Integer.parseInt(game.gameResult.substring(0, 1));
+                    tournamentResults[bot1ind] +=
+                        1000 * Integer.parseInt(game.gameResult.substring(game.gameResult.length() - 1));
                     tournamentResults[bot0ind] += game.appleEaten0;
                     tournamentResults[bot1ind] += game.appleEaten1;
                 }
+            }
         }
 
         ArrayList<Pair<Node, Integer>> results = new ArrayList<>();
-        for (int i = 0; i < participantsTrees.size(); i++)
+        for (int i = 0; i < participantsTrees.size(); i++) {
             results.add(new Pair<>(participantsTrees.get(i), tournamentResults[i]));
+        }
 
         return results;
     }
@@ -148,6 +153,7 @@ public class Population {
      * Cross two trees:
      * Choose random subtree in the first tree and exchange it with a random subtree in the second tree
      * Returns both children
+     *
      * @param a first parent
      * @param b second parent
      * @return pair of children tree root nodes
@@ -162,15 +168,19 @@ public class Population {
 
         // Exchanging chosenSubtreeA with chosenSubtreeB
 
-        if (chosenSubtreeA.parent != null)
-            chosenSubtreeA.parent.changeChild(chosenSubtreeA, chosenSubtreeB); // change parent's reference to the new child
-        else
+        if (chosenSubtreeA.parent != null) {
+            chosenSubtreeA.parent
+                .changeChild(chosenSubtreeA, chosenSubtreeB); // change parent's reference to the new child
+        } else {
             a = chosenSubtreeB; // if there's no parent - chosenSubtreeB became a new first root
+        }
 
-        if (chosenSubtreeB.parent != null)
-            chosenSubtreeB.parent.changeChild(chosenSubtreeB, chosenSubtreeA); // change parent's reference to the new child
-        else
+        if (chosenSubtreeB.parent != null) {
+            chosenSubtreeB.parent
+                .changeChild(chosenSubtreeB, chosenSubtreeA); // change parent's reference to the new child
+        } else {
             b = chosenSubtreeA; // if there's no parent - chosenSubtreeA became a new second root
+        }
 
         Node temp = chosenSubtreeA.parent;
         chosenSubtreeA.parent = chosenSubtreeB.parent;
@@ -181,18 +191,21 @@ public class Population {
 
     /**
      * Make a copy of the tree
+     *
      * @param a root node
      * @return root node of a copied tree
      */
     private Node copyTree(Node a) {
-        if (a == null)
+        if (a == null) {
             return null;
+        }
         return new Node(a, copyTree(a.left), copyTree(a.right));
     }
 
     /**
      * Apply mutation for tree:
      * Take a random Node and regenerate it and its subtree
+     *
      * @param a root node of a tree
      * @return mutated copy of param a
      */
@@ -204,24 +217,28 @@ public class Population {
         Node newNode = new Node(chosenNode.parent); // create a new Node
         newNode.generateSubtree(MAX_MUTATION_HEIGHT_SUBTREE); // generate its subtree
 
-        if (chosenNode.parent != null)
+        if (chosenNode.parent != null) {
             chosenNode.parent.changeChild(chosenNode, newNode); // change parent's reference to new child
-        else
+        } else {
             a = newNode; // if chosenNode was a root - whole tree was regenerated
+        }
 
         return a;
     }
 
     /**
      * Traverse a tree and make a list of all nodes
-     * @param t current node
+     *
+     * @param t          current node
      * @param tree_nodes ArrayList for storing nodes
      */
     private void dfs(Node t, ArrayList<Node> tree_nodes) {
         tree_nodes.add(t);
-        if (t.left != null)
+        if (t.left != null) {
             dfs(t.left, tree_nodes);
-        if (t.right != null)
+        }
+        if (t.right != null) {
             dfs(t.right, tree_nodes);
+        }
     }
 }

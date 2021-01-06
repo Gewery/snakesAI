@@ -12,8 +12,9 @@ import snakes.SnakesUIMain;
 public class NeralNetworksMain {
 
     static Random random = new Random();
-    final static Integer NUMBER_OF_LAYERS = 4;
-    final static int[] NUMBERS_OF_NEURONS = new int[]{8, 10, 10, 4};
+    final static int NUMBER_OF_LAYERS = 4;
+    final static int FIRST_LAYER_NEURONS_NUMBER = 8;
+    final static int[] NUMBERS_OF_NEURONS = new int[]{FIRST_LAYER_NEURONS_NUMBER, 10, 10, 4};
 
     public static void main(String[] args) throws IOException, InterruptedException {
 

@@ -11,7 +11,7 @@ public class SnakesWindow implements Runnable {
     private JFrame frame;
     private SnakeCanvas canvas;
     private SnakeGame game;
-    private final static int TIME_LIMIT_PER_GAME = 3 * 60 * 1000; // time limit in mills
+    private final static int TIME_LIMIT_PER_GAME = 60 * 1000; // time limit in mills
     private final static int TIME_LIMIT_PER_STEP = 1000; // time limit for one step in mills
 
     private boolean running = false;
@@ -77,7 +77,7 @@ public class SnakesWindow implements Runnable {
             long elapsed = System.currentTimeMillis() - t;
 
             try {
-                Thread.sleep(Math.max(200 - elapsed, 0));
+                Thread.sleep(Math.max(100 - elapsed, 0));
             } catch (InterruptedException e) {
                 if (game.gameResult != null)
                     game.gameResult = "interrupted";

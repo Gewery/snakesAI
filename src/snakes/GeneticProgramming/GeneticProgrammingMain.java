@@ -11,7 +11,7 @@ public class GeneticProgrammingMain {
     final static int MAX_GENERATION_COUNT = 200;
     private static FileWriter output;
 
-// NOTE: fitness function (or score) = (number of won games) * 10 + apples eaten
+// NOTE: fitness function (or score) = (number of won games) * 1000 + apples eaten
     public static void main(String[] args) throws InterruptedException, IOException {
         Population population = new Population();
 
@@ -21,8 +21,9 @@ public class GeneticProgrammingMain {
 
         ArrayList<Bot> bots = new ArrayList<>();
 
+        Bot humanWrittenBot = new Bot_D_Kabirov();
         bots.add(null);
-        bots.add(new Bot_D_Kabirov());
+        bots.add(humanWrittenBot);
 
         int generationNumber = 1;
         while (true) {
@@ -36,6 +37,7 @@ public class GeneticProgrammingMain {
 
             if (generationNumber % 10 == 0) {
                 bots.set(0, new Bot_GP(best_prev_gen));
+                bots.set(1, humanWrittenBot);
                 SnakesUIMain.start_tournament_n_times(2, bots);
                 output.write("\n" + bots.get(0).getClass().getSimpleName() + " vs. " + bots.get(1).getClass().getSimpleName() + ": " + SnakesUIMain.total_results_table[0][1] + " - " + SnakesUIMain.total_results_table[1][0] + "\n");
             }
@@ -52,7 +54,7 @@ public class GeneticProgrammingMain {
 //        printTree(bestTree);
     }
 
-    static void printTree(Node t, int spaces) throws IOException {
+    public static void printTree(Node t, int spaces) throws IOException {
         for (int i = 0; i < spaces; i++)
             output.write(' ');
         switch (t.type) {
