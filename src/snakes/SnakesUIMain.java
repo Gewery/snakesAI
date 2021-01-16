@@ -14,6 +14,14 @@ public class SnakesUIMain {
     private static FileWriter results_fw;
     public static int[][] total_results_table;
 
+    // init game settings
+    public static final Coordinate MAZE_SIZE = new Coordinate(14, 14);
+    public static final Coordinate HEAD_0 = new Coordinate(2, 2);
+    public static final Direction TAIL_DIRECTION_0 = Direction.DOWN;
+    public static final Coordinate HEAD_1 = new Coordinate(5, 5);
+    public static final Direction TAIL_DIRECTION_1 = Direction.UP;
+    public static final int SNAKE_SIZE = 3;
+
     /**
      * UI Entry point
      * @param args Two classes implementing the Bot interface
@@ -72,14 +80,6 @@ public class SnakesUIMain {
      * @throws IOException FileWriter handler
      */
     public static void start_round_robin_tournament(List<Bot> bots) throws InterruptedException, IOException {
-        // init game settings
-        Coordinate mazeSize = new Coordinate(14, 14);
-        Coordinate head0 = new Coordinate(2, 2);
-        Direction tailDirection0 = Direction.DOWN;
-        Coordinate head1 = new Coordinate(5, 5);
-        Direction tailDirection1 = Direction.UP;
-        int snakeSize = 3;
-
         // a number associated to each player in bots ArrayList
         ArrayList<Integer> playerNumber = new ArrayList<>();
 
@@ -106,7 +106,8 @@ public class SnakesUIMain {
                 Bot bot0 = bots.get(i);
                 Bot bot1 = bots.get(bots.size() - i - 1);
                 if (bot0 == null || bot1 == null) continue;
-                SnakeGame game = new SnakeGame(mazeSize, head0, tailDirection0, head1, tailDirection1, snakeSize, bot0, bot1);
+                SnakeGame game = new SnakeGame(MAZE_SIZE,
+                    HEAD_0, TAIL_DIRECTION_0, HEAD_1, TAIL_DIRECTION_1, SNAKE_SIZE, bot0, bot1);
                 SnakesWindow window = new SnakesWindow(game);
                 Thread t = new Thread(window);
                 t.start();

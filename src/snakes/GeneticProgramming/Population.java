@@ -53,7 +53,7 @@ public class Population {
         tournamentResults.sort(Comparator.comparingInt(Pair::getValue)); // sort by the number of wins
 
         ArrayList<Node> nextGeneration = new ArrayList<>();
-        // crossover stage
+        // 2 - crossover stage
         for (int i = 0; i < POPULATION_SIZE - ELITISM_COUNT; i += 2) {
             int max1 = -1, max2 = -1;
             for (int j = 0; j < PARENTS_SELECTION_GROUP_SIZE; j++) {
@@ -79,13 +79,13 @@ public class Population {
         }
 
 
-        // mutation stage
+        // 3 - mutation stage
         if (rn.nextDouble() <= MUTATION_PROBABILITY) {
             int chosen = rn.nextInt(nextGeneration.size());
             nextGeneration.set(chosen, mutation(nextGeneration.get(chosen)));
         }
 
-        // elitism stage
+        // 4 - elitism stage
         // take ELITISM_COUNT best and copy them into the new generation
         for (int i = 0; i < ELITISM_COUNT; i++) {
             nextGeneration.add(tournamentResults.get(tournamentResults.size() - i - 1).getKey());

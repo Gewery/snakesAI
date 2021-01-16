@@ -6,9 +6,6 @@ import java.util.List;
 import snakes.Bot;
 import snakes.Coordinate;
 import snakes.Direction;
-import snakes.NeuralNetwork.NNFunctions.DistanceToAnyObject;
-import snakes.NeuralNetwork.NNFunctions.ManhattanDistanceToTheApple;
-import snakes.NeuralNetwork.NNFunctions.NNFunction;
 import snakes.Snake;
 
 public class Bot_NN implements Bot {
@@ -21,12 +18,15 @@ public class Bot_NN implements Bot {
 
     private boolean isValid(Direction direction, Snake snake, Snake opponent, Coordinate mazeSize) {
         Coordinate newHead = snake.getHead().moveTo(direction);
-        if (!newHead.inBounds(mazeSize))
+        if (!newHead.inBounds(mazeSize)) {
             return false; // Left maze
-        if (snake.elements.contains(newHead))
+        }
+        if (snake.elements.contains(newHead)) {
             return false; // Collided with itself
-        if (opponent.elements.contains(newHead))
+        }
+        if (opponent.elements.contains(newHead)) {
             return false; // Collided with opponent
+        }
 
         return true;
     }
@@ -39,24 +39,29 @@ public class Bot_NN implements Bot {
         double max_score = -Float.MAX_VALUE;
 
         List<Double> inputData = new ArrayList<>();
-        NNFunction function = new DistanceToAnyObject();
-        NNFunction function2 = new ManhattanDistanceToTheApple();
 
-        System.out.print("inputData: ");
-        for (Direction to : Direction.values()) {
-            inputData.add(1 - function2.value(to, snake, opponent, mazeSize, apple));
-            inputData.add(function.value(to, snake, opponent, mazeSize, apple));
-            System.out.print(inputData.get(inputData.size() - 2) + " ");
-            System.out.print(inputData.get(inputData.size() - 1) + " ");
+        inputData.add(mazeSize.x * 1.0);
+        inputData.add(mazeSize.y * 1.0);
+        inputData.add(apple.x * 1.0);
+        inputData.add(apple.y * 1.0);
+
+        // (all cells - 1(for apple) - 1 (for opponent's head)) * 2 (different inputs for x and y)
+        int maxInputBodySize = (mazeSize.x * mazeSize.y - 2) * 2;
+
+        Snake current = snake;
+        for (int i = 0; i < 2; i++) {
+            for (Coordinate coordinate : current.body) {
+                inputData.add(coordinate.x + 1.0);
+                inputData.add(coordinate.y + 1.0);
+            }
+
+            for (int j = 0; j < maxInputBodySize - current.body.size() * 2; j++) {
+                inputData.add(0.0);
+            }
+            current = opponent;
         }
-        System.out.println();
 
         List<Double> result = neuralNetwork.calculate(inputData);
-        System.out.print("result: ");
-        for (Double res : result) {
-            System.out.print(res + " ");
-        }
-        System.out.println('\n');
 
         for (int i = 0; i < Direction.values().length; i++) {
             Direction to = Direction.values()[i];

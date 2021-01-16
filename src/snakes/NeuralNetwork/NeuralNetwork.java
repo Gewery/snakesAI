@@ -18,4 +18,11 @@ public class NeuralNetwork {
     public NeuralNetwork() {
         layers = new ArrayList<>();
     }
+
+    public NeuralNetwork copy() {
+        NeuralNetwork copy = new NeuralNetwork();
+        layers.forEach(layer -> copy.layers.add(layer.copy()));
+
+        return copy;
+    }
 }

@@ -7,4 +7,9 @@ public class ReLU implements ActivationFunction {
     public double activate(double input) {
         return max(0, input);
     }
+
+    @Override
+    public ActivationFunction copy() {
+        return new ReLU();
+    }
 }

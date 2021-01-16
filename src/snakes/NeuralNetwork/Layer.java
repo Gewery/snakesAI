@@ -3,6 +3,7 @@ package snakes.NeuralNetwork;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import snakes.NeuralNetwork.ActivationFunctions.ActivationFunction;
 
@@ -30,5 +31,14 @@ public class Layer {
         }
 
         return resultData;
+    }
+
+    public Layer copy() {
+        Layer copy = new Layer();
+        copy.biases = new LinkedList<>(this.biases);
+        this.activationFunctions.forEach(activationFunction -> copy.activationFunctions.add(activationFunction.copy()));
+        this.incomingEdges.forEach(innerIncomingEdges -> copy.incomingEdges.add(new LinkedList<>(innerIncomingEdges)));
+
+        return copy;
     }
 }

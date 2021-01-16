@@ -1,45 +1,53 @@
 package snakes.NeuralNetwork;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
 
 import DKabirov.Bot_D_Kabirov;
-import snakes.NeuralNetwork.ActivationFunctions.Sigmoid;
+import snakes.Bot;
 import snakes.SnakesUIMain;
+
+import static snakes.SnakesUIMain.MAZE_SIZE;
 
 public class NeralNetworksMain {
 
     static Random random = new Random();
-    final static int NUMBER_OF_LAYERS = 4;
-    final static int FIRST_LAYER_NEURONS_NUMBER = 8;
-    final static int[] NUMBERS_OF_NEURONS = new int[]{FIRST_LAYER_NEURONS_NUMBER, 10, 10, 4};
+    public final static int FIRST_LAYER_NEURONS_NUMBER = (MAZE_SIZE.x * MAZE_SIZE.y - 2) * 2 + 4;
 
     public static void main(String[] args) throws IOException, InterruptedException {
+       Population population = new Population();
+
+        ArrayList<Bot> bots = new ArrayList<>();
+
+        Bot humanWrittenBot = new Bot_D_Kabirov();
+        bots.add(null);
+        bots.add(humanWrittenBot);
+
+        int generationNumber = 1;
+        while (true) {
+            long time = System.currentTimeMillis();
+            System.out.println("Generation: " + generationNumber + " ");
+            population.makeNextGeneration();
+
+            System.out.print(population.bestNN.layers.size() + ": ");
+            for (int i = 0; i < population.bestNN.layers.size(); i++) {
+                System.out.print(population.bestNN.layers.get(i).biases.size() + " ");
+            }
+            System.out.println();
 
 
-        for (int u = 0; u < 10; u++) {
-            NeuralNetwork neuralNetwork = new NeuralNetwork();
-            for (int layerInd = 0; layerInd < NUMBER_OF_LAYERS; layerInd++) {
-                Layer layer = new Layer();
-                for (int currentNodeInd = 0; currentNodeInd < NUMBERS_OF_NEURONS[layerInd]; currentNodeInd++) {
-                    layer.biases.add(random.nextDouble());
-                    layer.activationFunctions.add(new Sigmoid());
-                    layer.incomingEdges.add(new LinkedList<>());
-
-                    if (layerInd != 0) {
-                        for (int prevNodeInd = 0; prevNodeInd < NUMBERS_OF_NEURONS[layerInd - 1]; prevNodeInd++) {
-                            layer.incomingEdges.get(currentNodeInd).add(random.nextDouble());
-                        }
-                    }
-                }
-
-                neuralNetwork.layers.add(layer);
+            if (generationNumber % 10 == 0) {
+                bots.set(0, new Bot_NN(population.bestNN));
+                bots.set(1, new Bot_NN(population.secondBestNN));
+                SnakesUIMain.start_tournament_n_times(1, bots);
             }
 
-            SnakesUIMain.start_tournament_n_times(2, Arrays.asList(new Bot_NN(neuralNetwork), new Bot_D_Kabirov()));
+            System.out.println("Time taken: " + (System.currentTimeMillis() - time) / 1000 + " seconds (" + (System.currentTimeMillis() - time) / 60000.0 + " mins)\n");
+            generationNumber += 1;
         }
-
     }
 }

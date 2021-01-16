@@ -45,17 +45,4 @@ public class Bot_GP implements Bot {
 
         return best_direction;
     }
-
-    public String TreeTraverse() {
-        return printTree(root);
-    }
-
-    private String printTree(Node t) {
-        switch (t.type) {
-            case 0: return "\nconstant_value: " + t.constantValue;
-            case 1: return "\nsubfunction: " + t.subfunction.getClass();
-            case 2: return "\noperation: " + t.operation.getClass() + printTree(t.left) + printTree(t.right);
-        }
-        return "";
-    }
 }
