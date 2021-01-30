@@ -41,4 +41,28 @@ public class Layer {
 
         return copy;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder(biases.size() + "\n");
+
+        for (Double bias : biases) {
+            result.append(bias).append(" ");
+        }
+        result.append("\n");
+
+        for (ActivationFunction activationFunction : activationFunctions) {
+            result.append(activationFunction.getClass().getSimpleName()).append(" ");
+        }
+        result.append("\n");
+
+        for (List<Double> incomingEdge : incomingEdges) {
+            for (Double edgeValue : incomingEdge) {
+                result.append(edgeValue).append(" ");
+            }
+            result.append("\n");
+        }
+
+        return result.toString();
+    }
 }

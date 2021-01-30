@@ -25,4 +25,13 @@ public class NeuralNetwork {
 
         return copy;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder(layers.size() + "\n");
+        for (int i = 1; i < layers.size(); i++) {
+            result.append(layers.get(i).toString()).append("\n");
+        }
+        return result.toString();
+    }
 }

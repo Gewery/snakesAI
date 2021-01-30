@@ -14,6 +14,16 @@ public class SnakeGame {
     private static final Boolean WRITE_TO_LOG = false;
 
     private static final String LOG_FILE = "log.txt";
+    private static FileWriter fw;
+
+    static {
+        try {
+            fw = new FileWriter(LOG_FILE, false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private static final long TIMEOUT_THRESHOLD = 1;// timeout threshold for taking a decision in seconds
     public final Snake snake0, snake1;
     public final Coordinate mazeSize;
@@ -109,23 +119,15 @@ public class SnakeGame {
      * @param text text that should be displayed
      */
     private void output(String text) {
-        //System.out.println(text);
-        FileWriter fw;
-        try {
-            fw = new FileWriter(LOG_FILE, true);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (!WRITE_TO_LOG)
             return;
-        }
-
-
         try {
             fw.write(text + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
-                fw.close();
+                fw.flush();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -138,8 +140,7 @@ public class SnakeGame {
      * @return whether to continue the game
      */
     public boolean runOneStep() throws InterruptedException {
-        if (WRITE_TO_LOG)
-            output(toString());
+        output(toString());
 
         // the first bot takes a decision of next move
 
@@ -202,8 +203,8 @@ public class SnakeGame {
         s0dead |= snake0.headCollidesWith(snake1);
         s1dead |= snake1.headCollidesWith(snake0);
 
-        if (WRITE_TO_LOG) output("snake0->" + d0 + ", snake1->" + d1);
-        if (WRITE_TO_LOG) output("Apples eaten: " + appleEaten0 + " - " + appleEaten1);
+        output("snake0->" + d0 + ", snake1->" + d1);
+        output("Apples eaten: " + appleEaten0 + " - " + appleEaten1);
 
         /* stopping game condition
             - one of snakes collides with something
@@ -218,7 +219,7 @@ public class SnakeGame {
             else if (s0dead && s1dead)
                 result = (appleEaten0 > appleEaten1 ? 1 : 0) + " - " + (appleEaten1 > appleEaten0 ? 1 : 0);
 
-            if (WRITE_TO_LOG) output("Result: " + result);
+            output("Result: " + result);
             gameResult += result;
         }
         return cont;
@@ -235,7 +236,7 @@ public class SnakeGame {
                 return;
             }
 
-        if (WRITE_TO_LOG) output(gameResult);
+        output(gameResult);
     }
 
     /**
