@@ -19,10 +19,10 @@ public class Population {
 
     public static final int POPULATION_SIZE = 20; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
     public static final int ELITISM_COUNT = 4; // must be less or equal to POPULATION_SIZE
-    public static final int PARENTS_SELECTION_GROUP_SIZE = 20;
+    public static final int PARENTS_SELECTION_GROUP_SIZE = 10;
 
     public static final int MAX_LAYERS_NUMBER = 10; // Limit for the number of layers in initial population
-    public static final int MAX_NEURONS_NUMBER = 400; // Limit for the number of neurons in initial population
+    public static final int MAX_NEURONS_NUMBER = 300; // Limit for the number of neurons in initial population
     public static final int MAX_MUTATION_LAYERS_NUMBER = 5; // max number of layers that can be added to a network after mutation
     public static final ActivationFunction DEFAULT_ACTIVATION_FUNCTION = new Sigmoid();
     public static final int STEPS_PER_GAME = 120; // number of steps allowed for one game = 2 mins = 2 * 60
