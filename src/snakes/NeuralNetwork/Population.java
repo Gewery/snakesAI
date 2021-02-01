@@ -17,9 +17,9 @@ import static snakes.NeuralNetwork.NeuralNetworksMain.FIRST_LAYER_NEURONS_NUMBER
 
 public class Population {
 
-    public static final int POPULATION_SIZE = 40; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
-    public static final int ELITISM_COUNT = 20; // must be less or equal to POPULATION_SIZE
-    public static final int PARENTS_SELECTION_GROUP_SIZE = 20;
+    public static final int POPULATION_SIZE = 20; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
+    public static final int ELITISM_COUNT = 4; // must be less or equal to POPULATION_SIZE
+    public static final int PARENTS_SELECTION_GROUP_SIZE = 10;
 
     public static final int MAX_LAYERS_NUMBER = 10; // Limit for the number of layers in initial population
     public static final int MAX_NEURONS_NUMBER = 300; // Limit for the number of neurons in initial population
@@ -102,7 +102,7 @@ public class Population {
         Pair<Integer, Integer> range = randomRangeInBounds(1, nn.layers.size() - 1);
         nn.layers.subList(range.getKey(), range.getValue() + 1).clear();
 
-        List<Layer> newLayers = generateRandomLayers(random.nextInt(MAX_MUTATION_LAYERS_NUMBER), 0);
+        List<Layer> newLayers = generateRandomLayers(random.nextInt(MAX_MUTATION_LAYERS_NUMBER) + 1, 0);
 
         nn.layers.addAll(range.getKey(), newLayers);
 
