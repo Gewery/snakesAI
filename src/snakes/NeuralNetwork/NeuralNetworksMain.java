@@ -15,7 +15,7 @@ import static snakes.SnakesUIMain.MAZE_SIZE;
 
 public class NeuralNetworksMain {
 
-    private static final String RESULT_FILE = "result2.txt";
+    private static final String RESULT_FILE = "result3.txt";
     private static FileWriter resultFw;
 
     public final static int FIRST_LAYER_NEURONS_NUMBER = (MAZE_SIZE.x * MAZE_SIZE.y - 2) * 2 + 4;
