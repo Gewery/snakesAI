@@ -94,6 +94,9 @@ public class Population {
 
 
     private Pair<NeuralNetwork, NeuralNetwork> crossover(NeuralNetwork n1, NeuralNetwork n2) {
+        if (n1.edgesWeights.size() <= 2 || n2.edgesWeights.size() <= 2) {
+            return new Pair<>(n1, n2);
+        }
         Pair<Integer, Integer> range1 = randomRangeInBounds(1, n1.edgesWeights.size() - 1);
         List<double[][]> sublist1 = n1.edgesWeights.subList(range1.getKey(), range1.getValue() + 1);
 
@@ -113,6 +116,9 @@ public class Population {
 
     private NeuralNetwork mutation(NeuralNetwork nn) {
         nn = nn.copy();
+
+        if (nn.edgesWeights.size() <= 2)
+            return nn;
 
         Pair<Integer, Integer> range = randomRangeInBounds(1, nn.edgesWeights.size() - 1);
         nn.edgesWeights.subList(range.getKey(), range.getValue() + 1).clear();
