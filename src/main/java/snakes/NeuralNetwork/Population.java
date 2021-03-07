@@ -200,7 +200,7 @@ public class Population {
     }
 
     /**
-     * Runs a tournament between trees specified number of times
+     * Runs a tournament between bots specified number of times
      *
      * @param participantsNetworks ArrayList with Networks that will participate in the tournament
      * @param n                 number of tournament runs
