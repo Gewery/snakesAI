@@ -1,7 +1,5 @@
 package snakes.simpleNeuralNetwork;
 
-import java.time.Instant;
-
 import snakes.Bot;
 import snakes.Coordinate;
 import snakes.Direction;
