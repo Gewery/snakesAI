@@ -2,7 +2,6 @@ package snakes.simpleNeuralNetwork;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -21,7 +20,7 @@ public class Population {
 
     public static final int MAX_LAYERS_NUMBER = 10; // Limit for the number of layers in initial population
     public static final int NEURONS_IN_LAYER = 200; // Number of neurons in one hidden layer
-    public static final int MAX_MUTATION_LAYERS_NUMBER = 5; // max number of layers that can be added to a network after mutation
+    public static final double MUTATION_PERCENT = 0.05; // percent of weights that will be changed during the mutation
     public static final int STEPS_PER_GAME = 120; // number of steps allowed for one game = 2 mins = 2 * 60
     public static final int NUMBER_OF_TOURNAMENT_RUNS = 1; //each population runs a tournament this number of times
     public static final double MUTATION_PROBABILITY = 0.02;
@@ -78,9 +77,10 @@ public class Population {
 
 
         // 3 - mutation stage
-        if (random.nextDouble() <= MUTATION_PROBABILITY) {
-            int chosen = random.nextInt(nextGeneration.size());
-            nextGeneration.set(chosen, mutation(nextGeneration.get(chosen)));
+        for (int i = 0; i < nextGeneration.size(); i++) {
+            if (random.nextDouble() <= MUTATION_PROBABILITY) {
+                nextGeneration.set(i, mutation(nextGeneration.get(i)));
+            }
         }
 
         // 4 - elitism stage
@@ -117,19 +117,20 @@ public class Population {
     private NeuralNetwork mutation(NeuralNetwork nn) {
         nn = nn.copy();
 
-        if (nn.edgesWeights.size() <= 2)
-            return nn;
-
-        Pair<Integer, Integer> range = randomRangeInBounds(1, nn.edgesWeights.size() - 1);
-        nn.edgesWeights.subList(range.getKey(), range.getValue() + 1).clear();
-
-        List<double[][]> newLayers = new LinkedList<>();
-        int newLayersSize = randomInBounds(1, MAX_MUTATION_LAYERS_NUMBER + 1);
-        for (int i = 0; i < newLayersSize; i++) {
-            newLayers.add(generateRandomLayer(Population.NEURONS_IN_LAYER, Population.NEURONS_IN_LAYER));
+        int totalEdges = 0;
+        for (int i = 0; i < nn.edgesWeights.size(); i++) {
+            totalEdges += nn.edgesWeights.get(i).length * nn.edgesWeights.get(i)[0].length;
         }
 
-        nn.edgesWeights.addAll(range.getKey(), newLayers);
+        int mutationCount = Double.valueOf(Math.ceil(MUTATION_PERCENT * totalEdges)).intValue();
+
+        for (int i = 0; i < mutationCount; i++) {
+            int layer = random.nextInt(nn.edgesWeights.size());
+            int row = random.nextInt(nn.edgesWeights.get(layer).length);
+            int column = random.nextInt(nn.edgesWeights.get(layer)[row].length);
+
+            nn.edgesWeights.get(layer)[row][column] = random.nextDouble() * (random.nextInt(2) == 0 ? 1 : -1);
+        }
 
         return nn;
     }
