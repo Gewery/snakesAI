@@ -14,12 +14,12 @@ import static snakes.SnakesUIMain.MAZE_SIZE;
 
 public class Population {
 
-    public static final int POPULATION_SIZE = 80; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
-    public static final int ELITISM_COUNT = 20; // must be less or equal to POPULATION_SIZE
-    public static final int PARENTS_SELECTION_GROUP_SIZE = 40;
+    public static final int POPULATION_SIZE = 40; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
+    public static final int ELITISM_COUNT = 10; // must be less or equal to POPULATION_SIZE
+    public static final int PARENTS_SELECTION_GROUP_SIZE = 20;
 
     public static final int MAX_LAYERS_NUMBER = 10; // Limit for the number of layers in initial population
-    public static final int NEURONS_IN_LAYER = 200; // Number of neurons in one hidden layer
+    public static final int NEURONS_IN_LAYER = 100; // Number of neurons in one hidden layer
     public static final double MUTATION_PERCENT = 0.05; // percent of weights that will be changed during the mutation
     public static final int STEPS_PER_GAME = 120; // number of steps allowed for one game = 2 mins = 2 * 60
     public static final int NUMBER_OF_TOURNAMENT_RUNS = 1; //each population runs a tournament this number of times
