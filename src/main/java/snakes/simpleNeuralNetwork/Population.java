@@ -14,7 +14,7 @@ import static snakes.SnakesUIMain.MAZE_SIZE;
 
 public class Population {
 
-    public static final int POPULATION_SIZE = 80; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
+    public static final int POPULATION_SIZE = 100; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
     public static final int ELITISM_COUNT = 20; // must be less or equal to POPULATION_SIZE
     public static final int PARENTS_SELECTION_GROUP_SIZE = 40;
 
@@ -22,7 +22,7 @@ public class Population {
     public static final int NEURONS_IN_LAYER = 200; // Number of neurons in one hidden layer
     public static final double MUTATION_PERCENT = 0.05; // percent of weights that will be changed during the mutation
     public static final int STEPS_PER_GAME = 120; // number of steps allowed for one game = 2 mins = 2 * 60
-    public static final int NUMBER_OF_TOURNAMENT_RUNS = 1; //each population runs a tournament this number of times
+    public static final int NUMBER_OF_TOURNAMENT_RUNS = 3; //each population runs a tournament this number of times
     public static final double MUTATION_PROBABILITY = 0.02;
     public static double CROSSOVER_PROBABILITY = 1;
 
@@ -36,17 +36,19 @@ public class Population {
 
     public Population() {
         networks = new ArrayList<>();
-        for (int i = 0; i < POPULATION_SIZE; i++) {
+        for (int i = 0; i < POPULATION_SIZE - 1; i++) {
             networks.add(generateRandomNeuralNetwork());
         }
+
+        networks.add(generateGreedyNN());
     }
 
     void makeNextGeneration() throws InterruptedException {
         // 0 - run the tournament between old generation's trees
         ArrayList<Pair<NeuralNetwork, Integer>> tournamentResults = runTournamentNTimes(networks, NUMBER_OF_TOURNAMENT_RUNS);
-        bestNN = tournamentResults.get(tournamentResults.size() - 1).getKey();
         // 1 - sort networks
         tournamentResults.sort(Comparator.comparingInt(Pair::getValue)); // sort by the number of wins
+        bestNN = tournamentResults.get(tournamentResults.size() - 1).getKey();
 
         // 2 - crossover stage
         ArrayList<NeuralNetwork> nextGeneration = new ArrayList<>();
@@ -175,11 +177,49 @@ public class Population {
         double[][] currentEdges = new double[nextLayerSize][previousLayerSize];
         for (int prevLayerIndex = 0; prevLayerIndex < previousLayerSize; prevLayerIndex++) {
             for (int nextLayerIndex = 0; nextLayerIndex < nextLayerSize; nextLayerIndex++) {
-                currentEdges[nextLayerIndex][prevLayerIndex ] = random.nextDouble() * (random.nextInt(2) == 0 ? 1 : -1);
+                currentEdges[nextLayerIndex][prevLayerIndex] = random.nextDouble() * (random.nextInt(2) == 0 ? 1 : -1);
             }
         }
 
         return currentEdges;
+    }
+
+    public NeuralNetwork generateGreedyNN() {
+        NeuralNetwork greedyNN = new NeuralNetwork();
+
+        double[][] currentEdges = new double[Population.NEURONS_IN_LAYER][Population.FIRST_LAYER_NEURONS_NUMBER];
+        for (int prevLayer = 0; prevLayer < Population.FIRST_LAYER_NEURONS_NUMBER; prevLayer++) {
+            for (int nextLayer = 0; nextLayer < Population.NEURONS_IN_LAYER; nextLayer++) {
+                currentEdges[nextLayer][prevLayer] = 0;
+            }
+        }
+
+        currentEdges[0][1] = 1.0;
+        currentEdges[0][3] = -1.0;
+        currentEdges[1][1] = -1.0;
+        currentEdges[1][3] = 1.0;
+        currentEdges[2][0] = 1.0;
+        currentEdges[2][2] = -1.0;
+        currentEdges[3][0] = -1.0;
+        currentEdges[3][2] = 1.0;
+
+        greedyNN.edgesWeights.add(currentEdges);
+
+        currentEdges = new double[Population.LAST_LAYER_NEURONS_NUMBER][Population.NEURONS_IN_LAYER];
+        for (int prevLayer = 0; prevLayer < Population.NEURONS_IN_LAYER; prevLayer++) {
+            for (int nextLayer = 0; nextLayer < Population.LAST_LAYER_NEURONS_NUMBER; nextLayer++) {
+                currentEdges[nextLayer][prevLayer] = 0;
+            }
+        }
+
+        currentEdges[0][0] = 1.0;
+        currentEdges[1][1] = 1.0;
+        currentEdges[2][2] = 1.0;
+        currentEdges[3][3] = 1.0;
+
+        greedyNN.edgesWeights.add(currentEdges);
+
+        return greedyNN;
     }
 
     /**
@@ -217,6 +257,10 @@ public class Population {
                     Bot_NN bot1 = new Bot_NN(participantsNetworks.get(bot1ind));
                     SnakeGame game =
                         new SnakeGame(mazeSize, head0, tailDirection0, head1, tailDirection1, snakeSize, bot0, bot1);
+
+//                    if (i == participantsNetworks.size() - 1 || j == participantsNetworks.size() - 1){
+//                        game.activateWritingToLog();
+//                    }
                     game.runWithoutPauses(STEPS_PER_GAME);
                     // score = (win ? 1 : 0) * 1000 + applesEaten
                     tournamentResults[bot0ind] += 1000 * Integer.parseInt(game.gameResult.substring(0, 1));

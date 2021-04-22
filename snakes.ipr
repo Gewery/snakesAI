@@ -11,11 +11,31 @@
       </root>
     </artifact>
   </component>
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="snakes" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="snakes" target="11" />
+    </bytecodeTargetLevel>
+  </component>
   <component name="InspectionProjectProfileManager">
     <profile version="1.0">
       <option name="myName" value="Project Default" />
     </profile>
     <version value="1.0" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
   </component>
   <component name="Palette2">
     <group name="Swing">
@@ -143,10 +163,194 @@
       <module fileurl="file://$PROJECT_DIR$/snakes.iml" filepath="$PROJECT_DIR$/snakes.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="corretto-11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+  </component>
+  <component name="libraryTable">
+    <library name="Maven: com.google.code.findbugs:jsr305:3.0.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.ejml:ejml-all:0.38">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-all/0.38/ejml-all-0.38.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-all/0.38/ejml-all-0.38-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-all/0.38/ejml-all-0.38-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.ejml:ejml-cdense:0.38">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-cdense/0.38/ejml-cdense-0.38.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-cdense/0.38/ejml-cdense-0.38-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-cdense/0.38/ejml-cdense-0.38-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.ejml:ejml-core:0.38">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-core/0.38/ejml-core-0.38.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-core/0.38/ejml-core-0.38-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-core/0.38/ejml-core-0.38-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.ejml:ejml-ddense:0.38">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-ddense/0.38/ejml-ddense-0.38.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-ddense/0.38/ejml-ddense-0.38-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-ddense/0.38/ejml-ddense-0.38-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.ejml:ejml-dsparse:0.38">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-dsparse/0.38/ejml-dsparse-0.38.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-dsparse/0.38/ejml-dsparse-0.38-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-dsparse/0.38/ejml-dsparse-0.38-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.ejml:ejml-fdense:0.38">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-fdense/0.38/ejml-fdense-0.38.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-fdense/0.38/ejml-fdense-0.38-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-fdense/0.38/ejml-fdense-0.38-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.ejml:ejml-simple:0.38">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-simple/0.38/ejml-simple-0.38.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-simple/0.38/ejml-simple-0.38-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-simple/0.38/ejml-simple-0.38-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.ejml:ejml-zdense:0.38">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-zdense/0.38/ejml-zdense-0.38.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-zdense/0.38/ejml-zdense-0.38-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/ejml/ejml-zdense/0.38/ejml-zdense-0.38-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.openjfx:javafx-base:17-ea+2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17-ea+2/javafx-base-17-ea+2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17-ea+2/javafx-base-17-ea+2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17-ea+2/javafx-base-17-ea+2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.openjfx:javafx-base:mac:17-ea+2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17-ea+2/javafx-base-17-ea+2-mac.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17-ea+2/javafx-base-17-ea+2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17-ea+2/javafx-base-17-ea+2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.openjfx:javafx-controls:17-ea+2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17-ea+2/javafx-controls-17-ea+2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17-ea+2/javafx-controls-17-ea+2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17-ea+2/javafx-controls-17-ea+2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.openjfx:javafx-controls:mac:17-ea+2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17-ea+2/javafx-controls-17-ea+2-mac.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17-ea+2/javafx-controls-17-ea+2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17-ea+2/javafx-controls-17-ea+2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.openjfx:javafx-graphics:17-ea+2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17-ea+2/javafx-graphics-17-ea+2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17-ea+2/javafx-graphics-17-ea+2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17-ea+2/javafx-graphics-17-ea+2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.openjfx:javafx-graphics:mac:17-ea+2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17-ea+2/javafx-graphics-17-ea+2-mac.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17-ea+2/javafx-graphics-17-ea+2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17-ea+2/javafx-graphics-17-ea+2-sources.jar!/" />
+      </SOURCES>
+    </library>
   </component>
 </project>

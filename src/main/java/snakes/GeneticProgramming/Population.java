@@ -7,7 +7,6 @@ import java.util.Random;
 import javafx.util.Pair;
 import snakes.Coordinate;
 import snakes.Direction;
-import snakes.GeneticProgramming.Subfunctions.DistanceToWall;
 import snakes.SnakeGame;
 
 public class Population {

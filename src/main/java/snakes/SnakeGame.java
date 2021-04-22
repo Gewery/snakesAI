@@ -11,10 +11,10 @@ import java.util.Random;
  */
 public class SnakeGame {
 
-    private static final Boolean WRITE_TO_LOG = false;
-
     private static final String LOG_FILE = "log.txt";
     private static FileWriter fw;
+
+    private Boolean writeToLog = false;
 
     static {
         try {
@@ -119,7 +119,7 @@ public class SnakeGame {
      * @param text text that should be displayed
      */
     private void output(String text) {
-        if (!WRITE_TO_LOG)
+        if (!writeToLog)
             return;
         try {
             fw.write(text + "\n");
@@ -245,14 +245,13 @@ public class SnakeGame {
     public void runWithoutPauses(int steps_allowed) throws InterruptedException {
 
         long time = System.currentTimeMillis();
-        while (steps_allowed-- > 0 && runOneStep());
+        while (--steps_allowed > 0 && runOneStep());
         //System.out.print(900 - steps_allowed);
         //System.out.println(" : " + 1.0 * (System.currentTimeMillis() - time) / 1000 + " seconds (" + (1.0 * (System.currentTimeMillis() - time) / (900 - steps_allowed)) + " mills per step)");
         if (steps_allowed == 0 && gameResult.equals("0 - 0")) {
             int snake0_size = snake0.body.size();
             int snake1_size = snake1.body.size();
             gameResult = (snake0_size > snake1_size ? 1 : 0) + " - " + (snake1_size > snake0_size ? 1 : 0);
-            System.out.println("Time is over: " + gameResult);
         }
     }
 
@@ -271,5 +270,9 @@ public class SnakeGame {
 
             return c;
         }
+    }
+
+    public void activateWritingToLog() {
+        writeToLog = true;
     }
 }

@@ -40,8 +40,8 @@ public class Bot_NN implements Bot {
 
         int maxDimension = Math.max(mazeSize.x, mazeSize.y);
 
-        inputData[inputDataIndex++] = apple.x * 1.0 / maxDimension;
-        inputData[inputDataIndex++] = apple.y * 1.0 / maxDimension;
+        inputData[inputDataIndex++] = (apple.x + 1.0) / maxDimension;
+        inputData[inputDataIndex++] = (apple.y + 1.0) / maxDimension;
 
         // (all cells - 1(for apple) - 1 (for opponent's head)) * 2 (different inputs for x and y)
         int maxInputBodySize = (mazeSize.x * mazeSize.y - 2) * 2;

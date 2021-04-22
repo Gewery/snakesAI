@@ -18,7 +18,7 @@ public class SubfunctionsLoader {
 
             ArrayList<Subfunction> result = new ArrayList<>();
 
-            File dir = new File("./src/snakes/GeneticProgramming/Subfunctions");
+            File dir = new File("src/main/java/snakes/GeneticProgramming/Subfunctions");
             File[] filesList = dir.listFiles();
             for (File file : filesList) {
                 if (file.isFile()) {

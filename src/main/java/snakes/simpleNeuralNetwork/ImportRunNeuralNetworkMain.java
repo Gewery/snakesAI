@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +16,7 @@ import static snakes.simpleNeuralNetwork.Population.FIRST_LAYER_NEURONS_NUMBER;
 
 public class ImportRunNeuralNetworkMain {
 
-    private static final String INPUT_FILE = "simpleNNresult.txt";
+    private static final String INPUT_FILE = "simpleNNresult-yandex.txt";
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
@@ -43,7 +42,9 @@ public class ImportRunNeuralNetworkMain {
         int prevLayerSize = FIRST_LAYER_NEURONS_NUMBER;
         for (int i = 0; i < numberOfLayers - 1; i++) {
             currentLine = reader.readLine();
-            int nextLayerSize = Integer.parseInt(currentLine);
+            int nextLayerSize = Population.NEURONS_IN_LAYER;
+            if (i == numberOfLayers - 2)
+                nextLayerSize = 4;
             double[][] inp = new double[nextLayerSize][prevLayerSize];
 
             for (int j = 0; j < nextLayerSize; j++) {

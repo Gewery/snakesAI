@@ -11,6 +11,9 @@ public class NeuralNetwork {
     private static final double[] BIASES = new double[Population.FIRST_LAYER_NEURONS_NUMBER];
 
     LinkedList<double[][]> edgesWeights;
+    //  [.123, .32, .23] [.23,  .34, .25] [.22,  .34, .25] [.23,  .34, .25] [.53,  .34, .25]
+    //< [.23,  .34, .25],[.62,  .133,.05],[.12,  .103,.15],[.14,  .133,.05],[.12,  .133,.05] >
+    //  [.12,  .133,.05] [.23,  .31, .25] [.23,  .34, .25] [.23,  .24, .25] [.23,  .36, .25]
 
     public NeuralNetwork() {
         edgesWeights = new LinkedList<>();

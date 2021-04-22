@@ -13,7 +13,7 @@ import snakes.SnakeGame;
 import static snakes.NeuralNetwork.Population.STEPS_PER_GAME;
 
 public class NeuralNetworksMain {
-    private static final String RESULT_FILE = "simpleNNresult.txt";
+    private static final String RESULT_FILE = "simpleNNresult-yandex.txt";
     private static FileWriter resultFw;
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -22,9 +22,8 @@ public class NeuralNetworksMain {
         ArrayList<Bot> bots = new ArrayList<>();
 
         Bot humanWrittenBot = new Bot_D_Kabirov();
-        bots.add(null);
         bots.add(humanWrittenBot);
-
+        bots.add(null);
 
         int generationNumber = 1;
         while (true) {
@@ -45,8 +44,7 @@ public class NeuralNetworksMain {
             );
 
 //            if (generationNumber % 10 == 0) {
-//                bots.set(0, new Bot_NN(population.bestNN));
-//                bots.set(1, new Bot_NN(population.secondBestNN));
+//                bots.set(1, new Bot_NN(population.bestNN));
 //                SnakesUIMain.start_tournament_n_times(1, bots);
 //            }
 

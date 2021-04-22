@@ -17,7 +17,7 @@ public class OperationsLoader {
         try {
             ArrayList<Operation> result = new ArrayList<>();
 
-            File dir = new File("./src/snakes/GeneticProgramming/Operations");
+            File dir = new File("src/main/java/snakes/GeneticProgramming/Operations");
             File[] filesList = dir.listFiles();
             for (File file : filesList) {
                 if (file.isFile()) {
