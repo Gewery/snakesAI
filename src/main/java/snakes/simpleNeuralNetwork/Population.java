@@ -36,11 +36,9 @@ public class Population {
 
     public Population() {
         networks = new ArrayList<>();
-        for (int i = 0; i < POPULATION_SIZE - 1; i++) {
+        for (int i = 0; i < POPULATION_SIZE; i++) {
             networks.add(generateRandomNeuralNetwork());
         }
-
-        networks.add(generateGreedyNN());
     }
 
     void makeNextGeneration() throws InterruptedException {

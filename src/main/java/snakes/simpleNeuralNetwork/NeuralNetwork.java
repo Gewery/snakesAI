@@ -7,7 +7,7 @@ import org.ejml.simple.SimpleMatrix;
 
 public class NeuralNetwork {
 
-    private static final Double BIAS = 0.1;
+    private static final Double BIAS = 0.0;
     private static final double[] BIASES = new double[Population.FIRST_LAYER_NEURONS_NUMBER];
 
     LinkedList<double[][]> edgesWeights;
