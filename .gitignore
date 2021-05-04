@@ -10,4 +10,8 @@ production/
 logs
 META-INF/
 *.ipr
-target/
+target/classes/
+target/generated-sources/
+target/maven-status/
+target/archive-tmp/
+.shelf/

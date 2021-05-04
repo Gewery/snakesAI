@@ -22,7 +22,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>snakes.simpleNeuralNetwork.NeuralNetworksMain</mainClass>
+                            <mainClass>snakes.computerVisionNeuralNetwork.NeuralNetworksMain</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
