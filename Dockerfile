@@ -7,4 +7,4 @@ FROM amazoncorretto:11
 COPY --from=build /home/app/target/snakes-1.0-SNAPSHOT-jar-with-dependencies.jar /usr/local/lib/snakes-1.0-SNAPSHOT.jar
 RUN yum install -y git
 RUN git clone https://github.com/Gewery/snakesAI.git
-ENTRYPOINT ["java", "-jar", "/usr/local/lib/snakes-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-Xmx15g", "-jar", "/usr/local/lib/snakes-1.0-SNAPSHOT.jar"]
