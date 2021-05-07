@@ -5,7 +5,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
+import DKabirov.Bot_D_Kabirov;
 import javafx.util.Pair;
+import snakes.Bot;
 import snakes.Coordinate;
 import snakes.Direction;
 import snakes.SnakeGame;
@@ -16,10 +18,10 @@ public class Population {
 
     public static final int POPULATION_SIZE = 200; // (POPULATION_SIZE - ELITISM_COUNT) % 2 == 0 must hold!
     public static final int ELITISM_COUNT = 20; // must be less or equal to POPULATION_SIZE
-    public static final int PARENTS_SELECTION_GROUP_SIZE = 5;
+    public static final int PARENTS_SELECTION_GROUP_SIZE = 10;
 
-    public static final int MAX_LAYERS_NUMBER = 5; // Limit for the number of layers in initial population
-    public static final int NEURONS_IN_LAYER = 400; // Number of neurons in one hidden layer
+    public static final int MAX_LAYERS_NUMBER = 10; // Limit for the number of layers in initial population
+    public static final int NEURONS_IN_LAYER = 200; // Number of neurons in one hidden layer
     public static final double MUTATION_PERCENT = 0.03; // percent of weights that will be changed during the mutation
     public static final int STEPS_PER_GAME = 120; // number of steps allowed for one game = 2 mins = 2 * 60
     public static final int NUMBER_OF_TOURNAMENT_RUNS = 2; //each population runs a tournament this number of times
@@ -228,19 +230,19 @@ public class Population {
 
         for (int k = 0; k < n; k++) {
             for (int i = 0; i < participantsNetworks.size(); i++) {
-                for (int j = i + 1; j < participantsNetworks.size(); j++) {
+//                for (int j = i + 1; j < participantsNetworks.size(); j++) {
                     int bot0ind = i;
-                    int bot1ind = j;
-                    if (random.nextInt(2) == 0) { // swap them sometimes for getting more reliable results
-                        int t = bot0ind;
-                        bot0ind = bot1ind;
-                        bot1ind = t;
-                    }
+//                    int bot1ind = j;
+//                    if (random.nextInt(2) == 0) { // swap them sometimes for getting more reliable results
+//                        int t = bot0ind;
+//                        bot0ind = bot1ind;
+//                        bot1ind = t;
+//                    }
 
                     Bot_NN bot0 = new Bot_NN(participantsNetworks.get(bot0ind));
-                    Bot_NN bot1 = new Bot_NN(participantsNetworks.get(bot1ind));
+                    Bot humanBot = new Bot_D_Kabirov();
                     SnakeGame game =
-                        new SnakeGame(mazeSize, head0, tailDirection0, head1, tailDirection1, snakeSize, bot0, bot1);
+                        new SnakeGame(mazeSize, head0, tailDirection0, head1, tailDirection1, snakeSize, bot0, humanBot);
 
 //                    if (i == participantsNetworks.size() - 1 || j == participantsNetworks.size() - 1){
 //                        game.activateWritingToLog();
@@ -248,11 +250,11 @@ public class Population {
                     game.runWithoutPauses(STEPS_PER_GAME);
                     // score = (win ? 1 : 0) * 1000 + applesEaten
                     tournamentResults[bot0ind] += 1000 * Integer.parseInt(game.gameResult.substring(0, 1));
-                    tournamentResults[bot1ind] +=
-                        1000 * Integer.parseInt(game.gameResult.substring(game.gameResult.length() - 1));
+//                    tournamentResults[bot1ind] +=
+//                        1000 * Integer.parseInt(game.gameResult.substring(game.gameResult.length() - 1));
                     tournamentResults[bot0ind] += game.appleEaten0;
-                    tournamentResults[bot1ind] += game.appleEaten1;
-                }
+//                    tournamentResults[bot1ind] += game.appleEaten1;
+//                }
             }
         }
 
