@@ -20,7 +20,7 @@ public class Population {
     public static final int ELITISM_COUNT = 20; // must be less or equal to POPULATION_SIZE
     public static final int PARENTS_SELECTION_GROUP_SIZE = 20;
 
-    public static final int MAX_LAYERS_NUMBER = 5; // Limit for the number of layers in initial population
+    public static final int MAX_LAYERS_NUMBER = 10; // Limit for the number of layers in initial population
     public static final int NEURONS_IN_LAYER = 200; // Number of neurons in one hidden layer
     public static final double MUTATION_PERCENT = 0.03; // percent of weights that will be changed during the mutation
     public static final int STEPS_PER_GAME = 120; // number of steps allowed for one game = 2 mins = 2 * 60
@@ -170,44 +170,6 @@ public class Population {
         return currentEdges;
     }
 
-    public NeuralNetwork generateGreedyNN() {
-        NeuralNetwork greedyNN = new NeuralNetwork();
-
-        double[][] currentEdges = new double[Population.NEURONS_IN_LAYER][Population.FIRST_LAYER_NEURONS_NUMBER];
-        for (int prevLayer = 0; prevLayer < Population.FIRST_LAYER_NEURONS_NUMBER; prevLayer++) {
-            for (int nextLayer = 0; nextLayer < Population.NEURONS_IN_LAYER; nextLayer++) {
-                currentEdges[nextLayer][prevLayer] = 0;
-            }
-        }
-
-        currentEdges[0][1] = 1.0;
-        currentEdges[0][3] = -1.0;
-        currentEdges[1][1] = -1.0;
-        currentEdges[1][3] = 1.0;
-        currentEdges[2][0] = 1.0;
-        currentEdges[2][2] = -1.0;
-        currentEdges[3][0] = -1.0;
-        currentEdges[3][2] = 1.0;
-
-        greedyNN.edgesWeights.add(currentEdges);
-
-        currentEdges = new double[Population.LAST_LAYER_NEURONS_NUMBER][Population.NEURONS_IN_LAYER];
-        for (int prevLayer = 0; prevLayer < Population.NEURONS_IN_LAYER; prevLayer++) {
-            for (int nextLayer = 0; nextLayer < Population.LAST_LAYER_NEURONS_NUMBER; nextLayer++) {
-                currentEdges[nextLayer][prevLayer] = 0;
-            }
-        }
-
-        currentEdges[0][0] = 1.0;
-        currentEdges[1][1] = 1.0;
-        currentEdges[2][2] = 1.0;
-        currentEdges[3][3] = 1.0;
-
-        greedyNN.edgesWeights.add(currentEdges);
-
-        return greedyNN;
-    }
-
     /**
      * Runs a tournament between bots specified number of times
      *
@@ -249,7 +211,7 @@ public class Population {
 //                    }
                     game.runWithoutPauses(STEPS_PER_GAME);
                     // score = (win ? 1 : 0) * 1000 + applesEaten
-                    tournamentResults[bot0ind] += 1000 * Integer.parseInt(game.gameResult.substring(0, 1));
+                    //tournamentResults[bot0ind] += 1000 * Integer.parseInt(game.gameResult.substring(0, 1));
 //                    tournamentResults[bot1ind] +=
 //                        1000 * Integer.parseInt(game.gameResult.substring(game.gameResult.length() - 1));
                     tournamentResults[bot0ind] += game.appleEaten0;

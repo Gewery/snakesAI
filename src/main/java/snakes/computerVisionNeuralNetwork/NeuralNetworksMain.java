@@ -14,7 +14,7 @@ import snakes.SnakesUIMain;
 import static snakes.NeuralNetwork.Population.STEPS_PER_GAME;
 
 public class NeuralNetworksMain {
-    private static final String RESULT_FILE = "cvNNresult-yandex-O(N).txt";
+    private static final String RESULT_FILE = "cvNNresult-yandex-O(N)-apples.txt";
     private static FileWriter resultFw;
 
     public static void main(String[] args) throws IOException, InterruptedException {
